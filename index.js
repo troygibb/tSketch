@@ -32,6 +32,7 @@ if (TARGET !== 'production' && TARGET !== 'test') {
 
 const port = process.env.PORT || 3000;
 
+app.use('/node_modules', express.static(path.join(process.env.PWD, 'node_modules')));
 app.use(express.static(path.join(process.env.PWD, 'build')));
 
 app.listen(port, () => console.log(`Listening on the magical port http://localhost:${port}`));

@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import reducer from './reducers/index';
-import HelloWorld from './helloWorld';
+import Draw from './draw';
 
 const finalStore = applyMiddleware(thunk)(createStore);
 const store = finalStore(reducer);
@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <div>
         <Provider store={store}>
-          <HelloWorld />
+          <Draw />
         </Provider>
       </div>
     );
