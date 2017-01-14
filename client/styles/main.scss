@@ -1,3 +1,9 @@
 body {
 	background-color: white;
+	#save-image {
+		border: 1px solid black; 
+	}
+	#save-image:hover {
+		background-color: grey;
+	}
 }
