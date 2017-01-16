@@ -10,11 +10,11 @@ const async = require('async');
 const User = keystone.list('User');
 
 const admins = [{
-  email: 'cmacpherson@vaynermedia.com',
+  email: 'troy.gibb@gmail.com',
   password: 'TempPass9',
   name: {
-    first: 'Chris',
-    last: 'MacPherson',
+    first: 'Troy',
+    last: 'Gibb',
   },
 }, {
   email: 'ajlin500@gmail.com',
