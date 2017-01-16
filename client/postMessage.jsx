@@ -19,7 +19,7 @@ class PostMessage extends React.Component {
 		this.props.postImageMessage({ png, message });
 	}
 	render() {
-		return <button onClick={ this.sendMessage } id="save-image" class="btn-primary btn-block">Send your thoughts to Trump!</button>;
+		return <button onClick={ this.sendMessage } id="save-image" className="btn-primary btn-block">Send your thoughts to Trump!</button>;
 	}
 }
 
