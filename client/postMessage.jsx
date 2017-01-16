@@ -2,7 +2,7 @@ import React from 'react';
 import LC from 'literallycanvas';
 import { connect } from 'react-redux';
 
-import { postImage } from './actions/index';
+import { postImageMessage } from './actions/index';
 
 class PostMessage extends React.Component {
 	constructor(props) {
@@ -10,22 +10,24 @@ class PostMessage extends React.Component {
 		this.state = {
 			options: { includeWatermark: true, scaleDownRetina: true }
 		};
-		this.getImage = this.getImage.bind(this);
+		this.sendMessage = this.sendMessage.bind(this);
 
 	}
-	getImage() {
+	sendMessage() {
 		const png = this.props.lc.getImage().toDataURL('image/png');
-		this.props.postImage({ png });
+		const { message } = this.props;
+		this.props.postImageMessage({ png, message });
 	}
 	render() {
-		return <h1 onClick={ this.getImage } id="save-image"> Save Image </h1>;
+		return <button onClick={ this.sendMessage } id="save-image" class="btn-primary btn-block">Send your thoughts to Trump!</button>;
 	}
 }
 
 const mapStateToProps = (state) => {
 	return {
 		lc: state.lc,
+		message: state.message,
 	};
 };
 
-export default connect(mapStateToProps, { postImage })(PostMessage)
+export default connect(mapStateToProps, { postImageMessage })(PostMessage)
