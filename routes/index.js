@@ -6,7 +6,7 @@ const importRoutes = keystone.importer(__dirname);
 const routes = {
   // params: importRoutes('./params'),
   // views: importRoutes('./views'),
-  // api: importRoutes('./api'),
+  api: importRoutes('./api'),
   middleware: importRoutes('./middleware'),
   // rss: importRoutes('./rss'),
 };
@@ -38,4 +38,7 @@ module.exports = function routesIndex(app) {
 
   // Views
   // app.get('/', routes.views.index);
+
+  // API
+  app.post('/postImage', keystone.middleware.api, routes.api.postImage);
 };

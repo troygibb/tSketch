@@ -1,6 +1,10 @@
-// Simulate config options from your production environment by
-// customising the .env file in your project's root folder.
 const isProduction = process.env.NODE_ENV === 'production';
+
+// Webpack env variables
+process.env.PWD = process.cwd();
+const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
+
 const dotenv = require('dotenv');
 
 if (!isProduction) {
@@ -42,12 +46,6 @@ keystone.init({
   //   relative_urls: false,
   // },
 
-  /*
-   * Mongoose by default sets the auto_reconnect option to true.
-   * We recommend setting socket options at both the server and replica set level.
-   * We recommend a 30 second connection timeout because it allows for
-   * plenty of time in most operating environments.
-   */
   'mongo options': {
     config: {
       autoIndex: false,
@@ -55,8 +53,9 @@ keystone.init({
   },
 });
 
-// Load your project's Models
+// Load your project Models
 keystone.import('models');
+
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
 // for each request) should be added to ./routes/middleware.js
