@@ -1,9 +1,9 @@
 const intitialState = {
-	message: 'Hello World!',
+	lc: {},
 };
 
 const actionHandler = {
-	'CHANGE-HELLO': (previousState, action) => Object.assign({}, previousState, { message: action.message }),
+	'ASSIGN-LC': (previousState, action) => Object.assign({}, previousState, { lc: action.lc }),
 };
 
 const reducer = (state = intitialState, action) => {
