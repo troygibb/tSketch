@@ -2,8 +2,7 @@ import React from 'react';
 import { LiterallyCanvasReactComponent } from 'literallycanvas';
 import { connect } from 'react-redux';
 
-import SaveImage from './saveImage';
-import { getLC } from './actions/index';
+import { assignLC } from './actions/index';
 
 class Draw extends React.Component {
 	constructor(props) {
@@ -12,11 +11,11 @@ class Draw extends React.Component {
   render() {
   	return (
 	  	<div>
-	  		<SaveImage />
 	  		<LiterallyCanvasReactComponent
 	  			onInit = { 
 	  				lc => {
-	  					this.props.getLC(lc);
+	  					lc.opts.tools.splice(2, 3);
+	  					this.props.assignLC(lc);
 	  					console.log("initialized with", lc) 
 	  				}
 	  			}
@@ -33,6 +32,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { getLC })(Draw)
+export default connect(mapStateToProps, { assignLC })(Draw)
 
+// opts -> tools 
 // 	  		<LC.LiterallyCanvasReactComponent imageURLPrefix="../node_modules/literallycanvas/img" />
