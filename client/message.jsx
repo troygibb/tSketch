@@ -5,8 +5,8 @@ class Message extends React.Component {
 		super(props);
 	}
 	render() {
-		return <div>Im the message!</div>; 
+		return <div>Im the new message!</div>; 
 	}
 }
 
-export default Message; 
+export default Message;
