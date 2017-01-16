@@ -37,7 +37,7 @@
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "keystone": "https://github.com/keystonejs/keystone.git#76e13eb1513fe4f64562072f46e80d02fa1adc64",
-    "literallycanvas": "^0.4.14",
+    "literallycanvas": "https://github.com/troygibb/literallycanvas.git",
     "lob": "^3.9.0",
     "mailgun-js": "^0.8.0",
     "node-loader": "^0.6.0",
