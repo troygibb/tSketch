@@ -11,6 +11,7 @@ class AtramentOptions extends React.Component {
     this.changeSmooth = this.changeSmooth.bind(this);
     this.changeWidth = this.changeWidth.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+    this.changeColor = this.changeColor.bind(this);
   }
   changeMode(event) {
     this.props.changeAtramentOption('mode', event.target.value);
@@ -22,17 +23,22 @@ class AtramentOptions extends React.Component {
   }
   changeWidth(event) {
     const newWeight = Number(event.target.value);
-    console.log(event);
     this.props.changeAtramentOption('weight', newWeight);
   }
   clearCanvas() {
     this.props.changeAtramentOption('clearing', true);
+  }
+  changeColor(event) {
+    this.props.changeAtramentOption('color', event.target.value);
   }
   render() {
     const { atrament } = this.props;
     return (
       <div>
         <form id="form">
+          Color:
+          <input type="color" onChange={this.changeColor} />
+          <br />
           <select onChange={this.changeMode}>
             <option value="draw">Draw</option>
             <option value="fill">Fill</option>

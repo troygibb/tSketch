@@ -5,7 +5,7 @@ const intitialState = {
     smoothing: false,
     weight: 10,
     opacity: 1,
-    clear: false,
+    clearing: false,
   },
   message: '',
 };
@@ -21,7 +21,7 @@ const actionHandler = {
         [action.change]: action.changeValue,
       })
     })
-    return x; 
+    return x;
   },
 };
 

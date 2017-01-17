@@ -15,11 +15,10 @@ class Atrament extends React.Component {
 		_.extend(this.atrament, this.props.atrament);
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.atrament.clear) {
-			console.log(this.atrament);
+		if (nextProps.atrament.clearing) {
 			this.atrament.clear();
-			this.changeAtramentOption('clearing', false);
-			return; 
+			this.props.changeAtramentOption('clearing', false);
+			return;
 		}
 		_.extend(this.atrament, nextProps.atrament);
 	}
@@ -27,7 +26,7 @@ class Atrament extends React.Component {
 		return (
 			<div>
 				{ Object.keys(this.props.atrament).length ? <AtramentOptions /> : false }
-				<canvas id="mySketcher" width="500px" height="500px"></canvas> 
+				<canvas id="mySketcher" width="500px" height="500px"></canvas>
 			</div>
 		)
 	}
