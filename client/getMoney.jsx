@@ -2,7 +2,8 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 
 import PostMessage from './postMessage';
-export default class TakeMoney extends React.Component {
+
+export default class GetMoney extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -21,7 +22,9 @@ export default class TakeMoney extends React.Component {
       <StripeCheckout
         token={this.onToken}
         stripeKey={ STRIPE_PUBLIC_KEY }
-      />
+      > 
+      <PostMessage />
+      </StripeCheckout>
     )
   }
 }
