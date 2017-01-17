@@ -93,6 +93,7 @@ function orderAPI(req, res) {
       }
     });
   }
+  // Email receipt
 
   async.eachSeries([
     uploadPostcardImage,

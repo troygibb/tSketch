@@ -5,7 +5,7 @@ class Message extends React.Component {
 		super(props);
 	}
 	render() {
-		return <div>Im the new message!</div>; 
+		return <div>Im the new message!</div>;
 	}
 }
 
