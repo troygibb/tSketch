@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { postImageMessage } from './actions/index';
-import TakeMoney from './getMoney';
 
 class PostMessage extends React.Component {
 	constructor(props) {
@@ -19,12 +18,7 @@ class PostMessage extends React.Component {
 		this.props.postImageMessage({ postcardImage, message });
 	}
 	render() {
-		return (
-			<div>
-				<button onClick={ this.sendMessage } id="save-image" className="btn-default">Finalize Postcard!</button>
-				<TakeMoney />
-			</div>
-		)
+		return <button onClick={ this.sendMessage } id="save-image" className="btn-default">Finalize Postcard!</button>
 	}
 }
 
