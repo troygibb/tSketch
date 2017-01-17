@@ -1,4 +1,4 @@
-import { ajax } from 'jQuery';
+import { ajax } from 'jquery';
 
 export const assignLC = (lc) => {
   return {
