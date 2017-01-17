@@ -1,19 +1,5 @@
 import { ajax } from 'jquery';
 
-export const assignLC = (lc) => {
-  return {
-    type: 'ASSIGN-LC',
-    lc,
-  };
-};
-
-export const assignAtrament = (atrament) => {
-  return {
-    type: 'ASSIGN-ATRAMENT',
-    atrament,
-  };
-};
-
 export const changeAtramentOption = (change, changeValue) => {
   return {
     type: 'CHANGE-ATRAMENT-OPTION',
@@ -22,15 +8,10 @@ export const changeAtramentOption = (change, changeValue) => {
   };
 };
 
-// TODO: ERROR/SUCCESS handling for ajax call below
-export const postImageMessage = (data) => {
-  return (dispatch) => {
-    ajax({
-      type: 'POST',
-      url: '/postImage',
-      dataType: 'json',
-      data,
-    });
+export const savePostcardImage = (postcardImage) => {
+  return {
+    type: 'SAVE-POSTCARD-IMAGE',
+    postcardImage,
   };
 };
 
@@ -38,5 +19,27 @@ export const changeMessage = (message) => {
   return {
     type: 'CHANGE-MESSAGE',
     message,
+  };
+};
+
+export const completeOrder = ({ stripeToken, email, postcardImage, message }) => {
+  return (dispatch) => {
+    ajax({
+      type: 'POST',
+      url: '/api/order',
+      dataType: 'json',
+      data: {
+        stripeToken,
+        email,
+        postcardImage,
+        message,
+      },
+    })
+    .done(() => {
+      console.log('SUCCESS');
+    })
+    .fail(() => {
+      console.log('ERROR');
+    });
   };
 };

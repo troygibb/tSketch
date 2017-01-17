@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import AT from 'atrament';
 import _ from 'lodash';
 
-import { assignAtrament, changeAtramentOption } from './actions/index';
+import { assignAtrament, changeAtramentOption, savePostcardImage } from './actions/index';
 import AtramentOptions from './atramentOptions';
 
 class Atrament extends React.Component {
   constructor(props) {
     super(props);
+    this.saveImage = this.saveImage.bind(this);
   }
   componentDidMount() {
     this.atrament = new AT('#mySketcher');
@@ -22,11 +24,20 @@ class Atrament extends React.Component {
     }
     _.extend(this.atrament, nextProps.atramentOptions);
   }
+  saveImage() {
+    const imageData = this.atrament.toImage();
+    this.props.savePostcardImage(imageData);
+  }
   render() {
     return (
       <div>
-        { Object.keys(this.props.atramentOptions).length ? <AtramentOptions /> : false }
-        <canvas id="mySketcher" width="500px" height="500px"></canvas>
+        <div>
+          { Object.keys(this.props.atramentOptions).length ? <AtramentOptions /> : false }
+          <canvas id="mySketcher" width="500px" height="500px" />
+        </div>
+        <Link to="/message">
+          <button onClick={this.saveImage} className="btn-default">Next</button>
+        </Link>
       </div>
     )
   }
@@ -38,4 +49,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { assignAtrament, changeAtramentOption })(Atrament)
+export default connect(mapStateToProps, {
+  assignAtrament,
+  changeAtramentOption,
+  savePostcardImage,
+})(Atrament);

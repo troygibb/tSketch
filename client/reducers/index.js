@@ -8,6 +8,7 @@ const intitialState = {
     clearing: false,
   },
   message: '',
+  postcardImage: null,
 };
 
 const actionHandler = {
@@ -21,6 +22,12 @@ const actionHandler = {
       },
     });
     return x;
+  },
+  'SAVE-POSTCARD-IMAGE': (previousState, action) => {
+    return {
+      ...previousState,
+      postcardImage: action.postcardImage,
+    };
   },
 };
 

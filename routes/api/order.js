@@ -1,14 +1,9 @@
 const async = require('async');
 const cloudinary = require('cloudinary');
 const keystone = require('keystone');
-const stripe = require('stripe');
-const lob = require('lob');
-const mailgun = require('mailgun-js');
-
-// Authorize APIs
-stripe(process.env.STRIPE_SECRET_KEY);
-lob(process.env.LOB_API_KEY);
-mailgun({
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const lob = require('lob')(process.env.LOB_API_KEY);
+const mailgun = require('mailgun-js')({
   apiKey: process.env.MAILGUN_API_KEY,
   domain: process.env.MAILGUN_DOMAIN,
 });
@@ -18,10 +13,10 @@ const utils = keystone.utils;
 
 function orderAPI(req, res) {
   // Check data
-  const email = req.data.email;
-  const postcardImage = req.data.postcardImage;
-  const message = req.data.message;
-  const stripeToken = req.data.stripeToken;
+  const email = req.body.email;
+  const postcardImage = req.body.postcardImage;
+  const message = req.body.message;
+  const stripeToken = req.body.stripeToken;
   if (!utils.isEmail(email) ||
       !utils.isDataURL(postcardImage) ||
       !utils.isString(message) ||
@@ -33,10 +28,13 @@ function orderAPI(req, res) {
     message,
   });
 
+  console.log(process.env.STRIPE_SECRET_KEY);
+
   // Upload image to Cloudinary
   function uploadPostcardImage(callback) {
     cloudinary.uploader.upload(postcardImage, (result) => {
       if (result.error) {
+        console.log(result);
         callback(result.error);
       } else {
         order.postcardImage = result;
@@ -53,6 +51,7 @@ function orderAPI(req, res) {
       description: `Charge for ${email}`,
     }, (err, charge) => {
       if (err) {
+        console.log(err);
         callback(err);
       } else {
         order.stripeChargeId = charge.id;
@@ -76,6 +75,7 @@ function orderAPI(req, res) {
       message,
     }, (err, response) => {
       if (err) {
+        console.log(err);
         callback(err);
       } else {
         order.postcardId = response.id;
@@ -87,6 +87,7 @@ function orderAPI(req, res) {
   function saveOrder(callback) {
     order.save((err) => {
       if (err) {
+        console.log(err);
         callback(err);
       } else {
         callback();
@@ -95,14 +96,15 @@ function orderAPI(req, res) {
   }
   // Email receipt
 
-  async.eachSeries([
+  async.series([
     uploadPostcardImage,
     chargeCreditCard,
     sendPostcard,
     saveOrder,
   ], (err, result) => {
     if (err) {
-      res.apiError('error');
+      console.log(err);
+      res.apiError('error', err);
     } else {
       res.apiResponse('success');
     }
