@@ -32,7 +32,7 @@ class AtramentOptions extends React.Component {
     this.props.changeAtramentOption('color', event.target.value);
   }
   render() {
-    const { atrament } = this.props;
+    const { atramentOptions } = this.props;
     return (
       <div>
         <form id="form">
@@ -50,7 +50,7 @@ class AtramentOptions extends React.Component {
             onChange={this.changeSmooth}
             type="checkbox"
             name="cbox1"
-            checked={atrament.smoothing}
+            checked={atramentOptions.smoothing}
           />
           <br/>
           Stroke width:
@@ -65,7 +65,7 @@ class AtramentOptions extends React.Component {
 //
 
 const mapStateToProps = (state) => {
-  return { atrament: state.atrament };
+  return { atramentOptions: state.atramentOptions };
 };
 
 export default connect(mapStateToProps, { changeAtramentOption })(AtramentOptions);
