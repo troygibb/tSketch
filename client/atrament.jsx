@@ -33,7 +33,7 @@ class Atrament extends React.Component {
     return (
       <div>
         <div>
-          { Object.keys(this.props.atramentOptions).length ? <AtramentOptions /> : false }
+          <AtramentOptions />
           <canvas id="mySketcher" />
         </div>
         <Link to="/message">
