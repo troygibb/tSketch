@@ -6,5 +6,6 @@ import ReduxThunk from 'redux-thunk';
 import ReactRouter from 'react-router';
 import uuid from 'uuid';
 import Stripe from 'stripe';
+import jQuery from 'jQuery';
 import StripeCheckout from 'react-stripe-checkout';
 import Lob from 'lob';
