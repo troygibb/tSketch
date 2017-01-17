@@ -30,6 +30,9 @@ const common = {
       title: 'DependencyMap',
       template: `${PATHS.app}/index.ejs`,
     }),
+    new webpack.DefinePlugin({
+      STRIPE_PUBLIC_KEY: JSON.stringify(process.env.STRIPE_PUBLIC_KEY),
+    }),
   ],
   module: {
     loaders: [

@@ -1,9 +1,62 @@
 body {
 	background-color: white;
-	#save-image {
-		border: 1px solid black; 
+	#main {
+		width: 100%;
+		height: 100%;
+		.navbar-brand {
+			font-family: Comic Sans MS;
+			font-size: 2em;
+		}
 	}
-	#save-image:hover {
-		background-color: grey;
+	#home {
+		width: 70%;
+		height: 100%;
+		margin: auto;
+		text-align: center;
+		h1 {
+			padding-top: 2em;
+		}
+		p {
+			padding-top: 1em;
+			padding-bottom: 1em;
+			font-size: 2em;
+		}
+		button {
+			width: 50%;
+			height: 2em;
+			font-size: 2em;
+		}
+	}
+	#draw {
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		button {
+			width: 25%;
+			margin: auto;
+			height: 2em;
+			font-size: 1.5em;
+		}
+	}
+	#message {
+		height: 100%;
+		margin: auto;
+		text-align: center;
+		h1 {
+			padding-top: 2em;
+		}
+		p {
+			padding-top: 1em;
+			padding-bottom: 1em;
+			font-size: 2em;
+		}
+		button {
+			width: 50%;
+			height: 2em;
+			font-size: 2em;
+		}
+	}
+	canvas {
+		background-color: white;
 	}
 }
