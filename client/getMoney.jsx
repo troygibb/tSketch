@@ -1,20 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 
-import PostMessage from './postMessage';
+import { completeOrder } from './actions/index';
 
-export default class GetMoney extends React.Component {
+class GetMoney extends React.Component {
   constructor(props) {
     super(props);
+    this.onToken = this.onToken.bind(this);
   }
-  onToken(token) {
-    fetch('/api/order', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
-      });
+  onToken(response) {
+    const email = response.email;
+    const stripeToken = response.id;
+    const postcardImage = this.props.postcardImage;
+    const message = this.props.message;
+    this.props.completeOrder({
+      email,
+      stripeToken,
+      postcardImage,
+      message,
     });
   }
   render() {
@@ -22,9 +26,16 @@ export default class GetMoney extends React.Component {
       <StripeCheckout
         token={this.onToken}
         stripeKey={ STRIPE_PUBLIC_KEY }
-      > 
-      <PostMessage />
+      >
+        <button>ButtoN!</button>
       </StripeCheckout>
     )
   }
 }
+const mapStateToProps = (currentState) => {
+  return {
+    message: currentState.message,
+    postcardImage: currentState.postcardImage,
+  };
+};
+export default connect(mapStateToProps, { completeOrder })(GetMoney);

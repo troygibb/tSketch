@@ -13,9 +13,6 @@ class Draw extends React.Component {
     return (
       <div id="draw">
         <Atrament />
-        <Link to="/message">
-          <button className="btn-default">Next</button>
-        </Link>
       </div>
     );
   }
