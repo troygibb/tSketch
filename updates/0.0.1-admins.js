@@ -26,7 +26,6 @@ const admins = [{
 }];
 
 function createAdmin(admin, done) {
-  /* eslint new-cap: ["error", { "properties": false }] */
   const newAdmin = new User.model(admin);
 
   newAdmin.isAdmin = true;
