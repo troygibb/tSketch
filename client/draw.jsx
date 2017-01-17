@@ -20,7 +20,7 @@ class Draw extends React.Component {
 	  					console.log("initialized with", lc) 
 	  				}
 	  			}
-	  			imageURLPrefix="../node_modules/literallycanvas/img" 
+	  			imageURLPrefix="/node_modules/literallycanvas/img" 
 	  		/>
 	  		<Link to='/message'>
 					<button className='btn-default'>Next</button>

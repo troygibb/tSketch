@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { changeMessage } from './actions/index';
 
-import PostMessage from './postMessage';
+import GetMoney from './getMoney';
 
 class Message extends React.Component {
 	constructor(props) {
@@ -20,7 +20,7 @@ class Message extends React.Component {
 			<div id='message'>
 				<input id='message-input' type="text" value={ message } onChange={this.changeMessage} />
 				<div>355 Character Limit</div>
-				<PostMessage />
+				<GetMoney />
 			</div>
 		);
 	}
