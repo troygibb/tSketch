@@ -1,5 +1,4 @@
 const async = require('async');
-const cloudinary = require('cloudinary');
 const keystone = require('keystone');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const lob = require('lob')(process.env.LOB_API_KEY);
@@ -18,7 +17,7 @@ function orderAPI(req, res) {
   const message = req.body.message;
   const stripeToken = req.body.stripeToken;
   if (!utils.isEmail(email) ||
-      !utils.isDataURL(postcardImage) ||
+      !utils.isObject(postcardImage) ||
       !utils.isString(message) ||
       !utils.isString(stripeToken)) {
     res.apiError('Invalid Input');
@@ -26,22 +25,9 @@ function orderAPI(req, res) {
   const order = new Order.model({
     email,
     message,
+    postcardImage,
   });
 
-  console.log(process.env.STRIPE_SECRET_KEY);
-
-  // Upload image to Cloudinary
-  function uploadPostcardImage(callback) {
-    cloudinary.uploader.upload(postcardImage, (result) => {
-      if (result.error) {
-        console.log(result);
-        callback(result.error);
-      } else {
-        order.postcardImage = result;
-        callback();
-      }
-    });
-  }
   // Charge credit card
   function chargeCreditCard(callback) {
     stripe.charges.create({
@@ -97,7 +83,7 @@ function orderAPI(req, res) {
   // Email receipt
 
   async.series([
-    uploadPostcardImage,
+    // uploadPostcardImage,
     chargeCreditCard,
     sendPostcard,
     saveOrder,
