@@ -1,8 +1,8 @@
 import React from 'react';
-import LC from 'literallycanvas';
 import { connect } from 'react-redux';
 
 import { postImageMessage } from './actions/index';
+import TakeMoney from './getMoney';
 
 class PostMessage extends React.Component {
 	constructor(props) {
@@ -14,12 +14,17 @@ class PostMessage extends React.Component {
 
 	}
 	sendMessage() {
-		const png = this.props.lc.getImage().toDataURL('image/png');
+		const postcardImage = this.props.lc.getImage().toDataURL('image/png');
 		const { message } = this.props;
-		this.props.postImageMessage({ png, message });
+		this.props.postImageMessage({ postcardImage, message });
 	}
 	render() {
-		return <button onClick={ this.sendMessage } id="save-image" className="btn-default">Finalize Postcard!</button>;
+		return (
+			<div>
+				<button onClick={ this.sendMessage } id="save-image" className="btn-default">Finalize Postcard!</button>
+				<TakeMoney />
+			</div>
+		)
 	}
 }
 
