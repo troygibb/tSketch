@@ -13,7 +13,8 @@ class Atrament extends React.Component {
     this.saveImage = this.saveImage.bind(this);
   }
   componentDidMount() {
-    this.atrament = new AT('#mySketcher');
+  	//width="1875" height="1275"
+    this.atrament = AT('#mySketcher', 1875, 1275, 'black');
     _.extend(this.atrament, this.props.atramentOptions);
   }
   componentWillReceiveProps(nextProps) {
@@ -33,10 +34,10 @@ class Atrament extends React.Component {
       <div>
         <div>
           { Object.keys(this.props.atramentOptions).length ? <AtramentOptions /> : false }
-          <canvas id="mySketcher" width="500px" height="500px" />
+          <canvas id="mySketcher" />
         </div>
         <Link to="/message">
-          <button onClick={this.saveImage} className="btn-default">Next</button>
+          <button onClick={this.saveImage} className="nextButton btn-default">Next</button>
         </Link>
       </div>
     )
