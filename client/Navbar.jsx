@@ -1,13 +1,13 @@
 import React from 'react';
 
-class MainContainer extends React.Component {
+class Navbar extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	render() {
 		return (
 			<div>
-				<div id="navBar" >
+				<div id="navbar" >
 					<a href="#">
 		        DrawTrumpADoodle!
 		      </a>
@@ -18,4 +18,4 @@ class MainContainer extends React.Component {
 	}
 }
 
-export default MainContainer; 
+export default Navbar; 

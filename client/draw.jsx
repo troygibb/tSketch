@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { assignLC } from './actions/index';
-import Atrament from './atrament';
+import Atrament from './Atrament';
 
 class Draw extends React.Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class Draw extends React.Component {
     return (
       <div id="draw">
         <Atrament />
+        <Link to="/message">
+          <button onClick={this.saveImage} className="nextButton">Next</button>
+        </Link>
       </div>
     );
   }
