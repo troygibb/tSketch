@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AT from 'atrament';
 import _ from 'lodash';
 
-import { assignAtrament } from './actions/index';
+import { assignAtrament, changeAtramentOption } from './actions/index';
 import AtramentOptions from './atramentOptions';
 
 class Atrament extends React.Component {
@@ -13,9 +13,14 @@ class Atrament extends React.Component {
 	componentDidMount() {
 		this.atrament = new AT('#mySketcher');
 		_.extend(this.atrament, this.props.atrament);
-		// this.props.assignAtrament(a 	trament);
 	}
 	componentWillReceiveProps(nextProps) {
+		if (nextProps.atrament.clear) {
+			console.log(this.atrament);
+			this.atrament.clear();
+			this.changeAtramentOption('clearing', false);
+			return; 
+		}
 		_.extend(this.atrament, nextProps.atrament);
 	}
 	render() {
@@ -34,4 +39,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { assignAtrament })(Atrament)
+export default connect(mapStateToProps, { assignAtrament, changeAtramentOption })(Atrament)

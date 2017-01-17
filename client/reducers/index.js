@@ -2,6 +2,10 @@ const intitialState = {
   lc: {},
   atrament: {
     mode: 'draw',
+    smoothing: false,
+    weight: 10,
+    opacity: 1,
+    clear: false,
   },
   message: '',
 };
@@ -17,7 +21,6 @@ const actionHandler = {
         [action.change]: action.changeValue,
       })
     })
-    console.log(x.atrament.mode);
     return x; 
   },
 };
