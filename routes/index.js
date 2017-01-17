@@ -1,5 +1,6 @@
 const keystone = require('keystone');
 
+const isProduction = process.env.NODE_ENV === 'production';
 const importRoutes = keystone.importer(__dirname);
 
 // Import Route Controllers
@@ -11,9 +12,11 @@ const routes = {
   // rss: importRoutes('./rss'),
 };
 
-
-keystone.pre('routes', routes.middleware.webpack.hotMiddleware);
-keystone.pre('routes', routes.middleware.webpack.devMiddleware);
+// Dev Only
+if (!isProduction) {
+  keystone.pre('routes', routes.middleware.webpack.hotMiddleware);
+  keystone.pre('routes', routes.middleware.webpack.devMiddleware);
+}
 
 // pre:routes
 // Note keep these first so redirected routes don't run uncessirry middleware

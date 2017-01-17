@@ -55,6 +55,8 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.0",
     "webpack-validator": "^2.2.9"
   },
   "devDependencies": {
@@ -70,8 +72,6 @@
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0",
     "react-addons-test-utils": "^15.3.2",
-    "supertest": "^2.0.1",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.0"
+    "supertest": "^2.0.1"
   }
 }
