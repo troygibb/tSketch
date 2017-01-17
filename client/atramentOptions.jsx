@@ -34,17 +34,18 @@ class AtramentOptions extends React.Component {
   render() {
     const { atramentOptions } = this.props;
     return (
-      <div id="form">
+      <div id="atramentOptions">
         <span>Color:</span>
         <input type="color" onChange={this.changeColor} />
         <br />
+        <span>Mode:</span>
         <select onChange={this.changeMode}>
           <option value="draw">Draw</option>
           <option value="fill">Fill</option>
           <option value="erase">Erase</option>
         </select>
         <br/>
-        <span>Smoothing?</span>
+        <span>Smoothing:</span>
         <input
           onChange={this.changeSmooth}
           type="checkbox"

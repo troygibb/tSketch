@@ -1,10 +1,10 @@
 body {
 	background-color: white;
-	#form {
+	#atramentOptions {
 		position: absolute;
 		width: 15%;
 		background-color: #ddd;
-		overflow: auto;
+		display: inline-block;
 		text-align: left;
 		border-radius: 5%;
 		padding: 10px;
@@ -12,11 +12,15 @@ body {
 		#weightField {
 			width: 20%;
 		}
-		button {
-			width: 50%;
+		input{
+			margin-bottom: 0.5em;
+		}
+		select {
+			margin-bottom: 0.5em;
 		}
 		span {
 			margin-right: 0.5em;
+			margin-bottom: 1em;
 		}
 	}
 	#main {
