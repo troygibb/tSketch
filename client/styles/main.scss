@@ -39,19 +39,22 @@ body {
 		}
 	}
 	#message {
+		height: 100%;
+		margin: auto;
 		text-align: center;
-		button {
-			width: 25%;
-			margin: auto;
-			height: 2em;
-			font-size: 1.5em;
+		h1 {
+			padding-top: 2em;
 		}
-	}
-	canvas {
-		background-color: white;
-	}
-	.lc-color-pickers {
-		padding-left: 20px;
+		p {
+			padding-top: 1em;
+			padding-bottom: 1em;
+			font-size: 2em;
+		}
+		button {
+			width: 50%;
+			height: 2em;
+			font-size: 2em;
+		}
 	}
 	canvas {
 		background-color: white;
