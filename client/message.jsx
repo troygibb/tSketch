@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { changeMessage } from './actions/index';
 
+import PostMessage from './postMessage';
+
 class Message extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,7 +16,13 @@ class Message extends React.Component {
 	}
 	render() {
 		const { message } = this.props; 
-		return <input type="text" value={ message } onChange={this.changeMessage} />;
+		return (
+			<div id='message'>
+				<input id='message-input' type="text" value={ message } onChange={this.changeMessage} />
+				<div>355 Character Limit</div>
+				<PostMessage />
+			</div>
+		);
 	}
 }
 
