@@ -17,8 +17,8 @@ class Message extends React.Component {
 	render() {
 		const { message } = this.props; 
 		return (
-			<div id='message'>				
-				<input id='message-input' type="text" value={ message } onChange={this.changeMessage} />
+			<div id="message">				
+				<textarea id="message-input" value={ message } onChange={this.changeMessage} placeholder="Dear Mr. Trump..."/>
 				<div>355 Character Limit</div>
 				<GetMoney />
 			</div>
