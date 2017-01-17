@@ -45,7 +45,8 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message }) =>
         },
       });
     })
-    .done(() => {
+    .done((result) => {
+      console.log(result);
       console.log('success');
     })
     .fail((err) => {
