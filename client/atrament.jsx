@@ -37,7 +37,7 @@ class Atrament extends React.Component {
           <canvas id="mySketcher" />
         </div>
         <Link to="/message">
-          <button onClick={this.saveImage} className="nextButton btn-default">Next</button>
+          <button onClick={this.saveImage} className="nextButton">Next</button>
         </Link>
       </div>
     )

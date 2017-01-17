@@ -7,15 +7,11 @@ class MainContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<nav className="navbar navbar-default">
-					<div className="container-fluid">
-				    <div className="navbar-header">
-				      <a className="navbar-brand" href="#">
-				        DrawTrumpADoodle!
-				      </a>
-				    </div>
-				  </div>
-				</nav>
+				<div id="navBar" >
+					<a href="#">
+		        DrawTrumpADoodle!
+		      </a>
+			  </div>
 				{ this.props.children }
 			</div>
 		)

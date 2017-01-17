@@ -1,7 +1,34 @@
 body {
 	background-color: white;
+	button {
+		background-color: #ddd;
+		color: #333;
+		border: none;
+	}
+	#navBar {
+		width: 100%;
+		height: 25%;
+		background-color: #ddd;
+		a {
+			margin-left: 0.5em;
+			margin-top: 0.25em;
+			margin-bottom: 0.25em;
+			font-family: Comic Sans MS;
+			font-size: 2em;
+			color: #333;
+			text-decoration: none;
+		}
+	}
+	#collapseToggle {
+		margin: 0;
+		font-size: 10px;
+		color: #333;
+		text-decoration: none;
+	}
 	#atramentOptions {
 		position: absolute;
+		margin-top: 1em;
+		margin-left: 1em;
 		width: 15%;
 		background-color: #ddd;
 		display: inline-block;
@@ -11,6 +38,10 @@ body {
 		font-weight: bold;
 		#weightField {
 			width: 20%;
+		}
+		button {
+			border: 1px solid #333;
+			border-radius: 10%;
 		}
 		input{
 			margin-bottom: 0.5em;
@@ -54,12 +85,6 @@ body {
 		width: 100%;
 		height: 100%;
 		text-align: center;
-		.nextButton {
-			width: 25%;
-			margin: auto;
-			height: 2em;
-			font-size: 1.5em;
-		}
 		#mySketcher {
 			width: 100%;
 		}
@@ -71,19 +96,30 @@ body {
 		h1 {
 			padding-top: 2em;
 		}
+		input[type=text] {
+			font-size: 3em;
+			margin-top: 1.5em;
+			margin-bottom: 1.5em;
+			width: 50%;
+			height: 50%;
+			border: 1px solid black;
+		}
+		input[type=text]:focus {
+			outline: none;
+		}
 		p {
 			padding-top: 1em;
 			padding-bottom: 1em;
 			font-size: 2em;
 		}
-		button {
-			width: 50%;
-			height: 2em;
-			font-size: 2em;
-		}
+	}
+	.nextButton {
+		width: 25%;
+		margin: auto;
+		height: 2em;
+		font-size: 1.5em;
 	}
 	canvas {
 		background-color: white;
-		border: 1px solid black;
 	}
 }

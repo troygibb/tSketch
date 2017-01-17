@@ -27,7 +27,7 @@ class GetMoney extends React.Component {
         token={this.onToken}
         stripeKey={ STRIPE_PUBLIC_KEY }
       >
-        <button>ButtoN!</button>
+        <button className="nextButton">Place your order!</button>
       </StripeCheckout>
     )
   }
