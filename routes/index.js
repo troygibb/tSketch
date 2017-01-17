@@ -40,5 +40,5 @@ module.exports = function routesIndex(app) {
   // app.get('/', routes.views.index);
 
   // API
-  app.post('/postImage', keystone.middleware.api, routes.api.postImage);
+  app.post('/api/order', keystone.middleware.api, routes.api.order);
 };
