@@ -120,8 +120,8 @@ class Atrament {
       const yScale = canvasHeight / renderHeight;
 
       const position = e.changedTouches && e.changedTouches[0] || e;
-      let x = position.offsetX * xScale;
-      let y = position.offsetY * yScale;
+      let x = position.offsetX;
+      let y = position.offsetY;
 
       if (typeof x === 'undefined') {
         x = position.clientX + document.documentElement.scrollLeft - rect.left;
@@ -129,6 +129,10 @@ class Atrament {
       if (typeof y === 'undefined') {
         y = position.clientY + document.documentElement.scrollTop - rect.top;
       }
+
+      // Fix Scale Issues
+      x = x * xScale;
+      y = y * yScale;
 
       // draw if we should draw
       if (this.mouse.down) {

@@ -65,7 +65,7 @@ function orderAPI(req, res) {
         callback(err);
       } else {
         order.postcardId = response.id;
-        callback();
+        callback(null, response);
       }
     });
   }
@@ -92,7 +92,12 @@ function orderAPI(req, res) {
       console.log(err);
       res.apiError('error', err);
     } else {
-      res.apiResponse('success');
+      const postcardData = result[1];
+      res.apiResponse({
+        frontThumbnail: postcardData.thumbnails[0].medium,
+        backThumbnail: postcardData.thumbnails[1].medium,
+        expectedDeliveryDate: postcardData.expected_delivery_date,
+      });
     }
   });
 }
