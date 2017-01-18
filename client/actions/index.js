@@ -24,6 +24,7 @@ export const changeMessage = (message) => {
 
 export const completeOrder = ({ stripeToken, email, postcardImage, message }) => {
   return (dispatch) => {
+    // Upload image to cloudinary
     ajax({
       url: `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
       type: 'POST',
@@ -33,6 +34,7 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message }) =>
       },
     })
     .done((uploadData) => {
+      // Process the order
       return ajax({
         type: 'POST',
         url: '/api/order',
@@ -45,8 +47,8 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message }) =>
         },
       });
     })
-    .done((result) => {
-      console.log(result);
+    .done((uploadData, orderResponse) => {
+      console.log(orderResponse);
       console.log('success');
     })
     .fail((err) => {
