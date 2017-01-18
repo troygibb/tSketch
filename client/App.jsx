@@ -11,6 +11,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Draw from './Draw';
 import Message from './Message';
+import Success from './Success';
 
 const finalStore = applyMiddleware(thunk)(createStore);
 const store = finalStore(reducer);
@@ -25,6 +26,7 @@ class App extends React.Component {
               <IndexRoute component={Home} />
               <Route path="/draw" component={Draw} />
               <Route path="/message" component={Message} />
+              <Route path="/doodle-success" component={Success} />
             </Route>
           </Router>
         </Provider>
