@@ -10,6 +10,7 @@ const intitialState = {
   message: '',
   postcardImage: null,
   orderResponse: {},
+  overCharacterLimit: false,
 };
 
 const actionHandler = {

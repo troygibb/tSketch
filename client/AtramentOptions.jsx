@@ -24,7 +24,6 @@ class AtramentOptions extends React.Component {
   }
   changeWidth(event) {
     const newWeight = Number(event.target.value);
-    console.log(newWeight)
     this.props.changeAtramentOption('weight', newWeight);
   }
   clearCanvas() {
@@ -33,9 +32,18 @@ class AtramentOptions extends React.Component {
   changeColor(color) {
     this.props.changeAtramentOption('color', color.hex);
   }
+  goFullScreen() {
+    var canvas = document.getElementById("draw");
+    if (canvas.requestFullScreen) {
+      canvas.requestFullScreen();
+    } else if (canvas.webkitRequestFullScreen) {
+      canvas.webkitRequestFullScreen();
+    } else if (canvas.mozRequestFullScreen) {
+      canvas.mozRequestFullScreen();
+    }
+  }
   render() {
     const { atramentOptions } = this.props;
-    console.log(atramentOptions.color)
     return (
       <div id="atramentOptions">
         <form id="options">
@@ -60,15 +68,15 @@ class AtramentOptions extends React.Component {
           />
           
           <span>Stroke width:</span>
-          <input type="text" id="weightField" onChange={this.changeWidth}/>
-          <button onClick={this.clearCanvas}>Clear</button>
-          <input
+          <input 
             type="range"
-            minValue={0}
-            maxValue={20}
+            min="1"
+            max="40"
             value= {this.props.atramentOptions.weight}
             onChange={this.changeWidth}
           />
+          <button onClick={this.clearCanvas}>Clear</button>
+          <button onClick={this.goFullScreen}>Go Fullscreen</button>
         </form>
       </div>
     );
