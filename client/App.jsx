@@ -13,6 +13,8 @@ import Draw from './Draw';
 import Message from './Message';
 import ConfirmPage from './ConfirmPage';
 import Success from './Success';
+import Footer from './Footer';
+
 
 const finalStore = applyMiddleware(thunk)(createStore);
 const store = finalStore(reducer);
