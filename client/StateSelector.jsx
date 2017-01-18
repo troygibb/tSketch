@@ -9,7 +9,7 @@ class StateSelector extends React.Component {
 		this.changeAddressState = this.changeAddressState.bind(this);
 	}
 	changeAddressState(event) {
-		this.props.changeAddress('state', event.target.value);
+		this.props.changeAddress('address_state', event.target.value);
 	}
 	render() {
 		return (

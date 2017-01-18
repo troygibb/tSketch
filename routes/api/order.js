@@ -1,7 +1,7 @@
 const async = require('async');
 const keystone = require('keystone');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const lob = require('lob')(process.env.LOB_API_KEY);
+const Lob = require('lob')(process.env.LOB_API_KEY);
 const mailgun = require('mailgun-js')({
   apiKey: process.env.MAILGUN_API_KEY,
   domain: process.env.MAILGUN_DOMAIN,
@@ -16,22 +16,40 @@ function orderAPI(req, res) {
   const postcardImage = req.body.postcardImage;
   const message = req.body.message || 'To Mr. Trump:';
   const stripeToken = req.body.stripeToken;
+  const additionalAddress = req.body.additionalAddress || {};
   if (!utils.isEmail(email) ||
       !utils.isObject(postcardImage) ||
       !utils.isString(message) ||
-      !utils.isString(stripeToken)) {
+      !utils.isString(stripeToken) ||
+      !utils.isObject(additionalAddress)) {
     res.apiError('Invalid Input');
   }
   const order = new Order.model({
     email,
     message,
     postcardImage,
+    additionalAddress,
   });
+
+  // Check whether one or two postcards need to be send
+  let twoPostcards = false;
+  if (Object.keys(additionalAddress).length > 0) {
+    twoPostcards = true;
+  }
 
   // Charge credit card
   function chargeCreditCard(callback) {
+    // Calulate total billing amount
+    const costPerCard = 200; // $2.00 in cents
+    let totalCost;
+    if (twoPostcards) {
+      totalCost = costPerCard * 2;
+    } else {
+      totalCost = costPerCard;
+    }
+
     stripe.charges.create({
-      amount: 199, // $1.99 in cents
+      amount: totalCost,
       currency: 'usd',
       source: stripeToken,
       description: `Charge for ${email}`,
@@ -45,27 +63,49 @@ function orderAPI(req, res) {
       }
     });
   }
-  // Send postcard
-    // On error, refund customer
-  function sendPostcard(callback) {
-    lob.postcards.create({
-      description: `Card for ${email}`,
-      to: {
-        name: 'The White House',
-        address_line1: '1600 Pennsylvania Avenue NW',
-        address_city: 'Washington',
-        address_state: 'DC',
-        address_zip: '20500',
-      },
-      front: order.postcardImage.url,
-      message,
-    }, (err, response) => {
+  // Send postcards
+  function sendPostcards(callback) {
+    const whitehouseAddress = {
+      name: 'The White House',
+      address_line1: '1600 Pennsylvania Avenue NW',
+      address_city: 'Washington',
+      address_state: 'DC',
+      address_zip: '20500',
+    };
+    let whitehousePostcardResponse;
+    async.each([
+      whitehouseAddress, additionalAddress,
+    ], (address, done) => {
+      const postcardData = {
+        description: `Card for ${email}`,
+        front: order.postcardImage.url,
+        message,
+      };
+      if (Object.keys(address).length === 0) {
+        done(); // No additional address, don't try to send card
+        return;
+      }
+      const postcardDataWithAddress = Object.assign({}, postcardData, { to: address });
+      Lob.postcards.create(postcardDataWithAddress, (err, response) => {
+        if (err) {
+          done(err);
+        } else if (JSON.stringify(whitehouseAddress) === JSON.stringify(address)) {
+          // Whitehouse Postcard
+          order.postcardId = response.id;
+          whitehousePostcardResponse = response;
+          done();
+        } else {
+          // Additional Postcard
+          order.additionalPostcardId = response.id;
+          done();
+        }
+      });
+    }, (err) => {
       if (err) {
         console.log(err);
         callback(err);
       } else {
-        order.postcardId = response.id;
-        callback(null, response);
+        callback(null, whitehousePostcardResponse);
       }
     });
   }
@@ -100,7 +140,7 @@ function orderAPI(req, res) {
 
   async.series([
     chargeCreditCard,
-    sendPostcard,
+    sendPostcards,
     saveOrder,
     emailReceipt,
   ], (err, result) => {
@@ -113,6 +153,7 @@ function orderAPI(req, res) {
         frontThumbnail: postcardData.thumbnails[0].medium,
         backThumbnail: postcardData.thumbnails[1].medium,
         expectedDeliveryDate: postcardData.expected_delivery_date,
+        additionalAddress: twoPostcards,
       });
     }
   });

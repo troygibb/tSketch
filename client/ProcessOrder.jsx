@@ -14,6 +14,7 @@ class ProcessOrder extends React.Component {
     const stripeToken = response.id;
     const postcardImage = this.props.postcardImage;
     const message = this.props.message;
+    const additionalAddress = this.props.additionalAddress;
     this.props.completeOrder({
       email,
       stripeToken,

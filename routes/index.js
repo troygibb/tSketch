@@ -44,4 +44,5 @@ module.exports = function routesIndex(app) {
 
   // API
   app.post('/api/order', keystone.middleware.api, routes.api.order);
+  app.post('/api/verify-address', keystone.middleware.api, routes.api.verifyAddress);
 };
