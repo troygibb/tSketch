@@ -1,117 +1,146 @@
+// globals
+
 body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+// Home
+.heroSection{
+	&__wrapper{
+		background-image: url('http://a.abcnews.com/images/Politics/RT_DTrump_Pa_MEM_160628_12x5_1600.jpg');
+		background-size: cover;
+		background-position: top left;
+		color: white;
+		padding: 15px;
+	}
+	&__heading{
+		font-size: 36px;
+		text-shadow: 1px 1px 2px black;
+		margin-top: 30px;
+	}
+	&__text{
+		font-size: 18px;
+		text-shadow: 1px 1px 2px black;
+		margin-bottom: 30px;
+	}
+	&__CTAWrapper{
+		background-color: rgba(46,52,95, 0.8);
+		padding: 15px 15px 20px 15px;
+		margin: 20px 0px;
+	}
+	&__CTAButton{
+		background: #00bf00;
+		color: white;
+		vertical-align: bottom;
+	}
+	&__CTAHeading{
+		font-size: 28px;
+		display: inline-block;
+		margin-right: 15px;
+	}
+}
+.aboutSection{
+	&__heading{
+		margin: 30px 0px;
+	}
+	&__image{
+		max-width: 100%;
+	}
+}
+
+
+// nav
+#navbar {
+	width: 100%;
 	background-color: white;
-	button {
-		background-color: #ddd;
-		color: #333;
-		border: none;
+	border-bottom: 1px solid rgb(46, 52, 95);
+	font-family: Comic Sans MS;
+	font-size: 30px;
+	color: rgb(46, 52, 95);
+	padding: 10px 0px;
+}
+
+
+
+#collapseToggle {
+	margin: 0;
+	font-size: 10px;
+	color: #333;
+	text-decoration: none;
+}
+#atramentOptions {
+	margin-top: 1em;
+	margin-left: 1em;
+	position: absolute;
+	width: 15%;
+	background-color: #ddd;
+	display: inline-block;
+	text-align: left;
+	border-radius: 5%;
+	padding: 10px;
+	font-weight: bold;
+	#weightField {
+		width: 20%;
 	}
-	#navbar {
+	input {
+		margin-bottom: 0.5em;
+	}
+	select {
+		margin-bottom: 0.5em;
+	}
+	span {
+		margin-right: 0.5em;
+		margin-bottom: 1em;
+	}
+}
+#main {
+	width: 100%;
+	height: 100%;
+	.navbar-brand {
+		font-family: Comic Sans MS;
+		font-size: 2em;
+	}
+}
+#draw {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	#mySketcher {
+		margin-top: 4em;
 		width: 100%;
-		height: 25%;
-		background-color: #ddd;
-		a {
-			margin-left: 0.5em;
-			margin-top: 0.25em;
-			margin-bottom: 0.25em;
-			font-family: Comic Sans MS;
-			font-size: 2em;
-			color: #333;
-			text-decoration: none;
-		}
 	}
-	#collapseToggle {
-		margin: 0;
-		font-size: 10px;
-		color: #333;
-		text-decoration: none;
+}
+#message {
+	height: 100%;
+	margin: auto;
+	text-align: center;
+	h1 {
+		padding-top: 2em;
 	}
-	#atramentOptions {
-		margin-top: 1em;
-		margin-left: 1em;
-		width: 100%;
-		padding: 10px;
-		font-weight: bold;
-		#colorPicker {
-			position: absolute;
-		}
-		#weightField {
-			width: 2em;
-		}
-		button {
-			border: 1px solid #333;
-			border-radius: 10%;
-		}
-		span {
-			margin-right: 0.5em;
-		}
-		input[type=range] {
-			width: 5em;
-		}
+	input[type=text] {
+		font-size: 3em;
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+		width: 50%;
+		height: 50%;
+		border: 1px solid black;
 	}
-	#main {
-		width: 100%;
-		height: 100%;
-		.navbar-brand {
-			font-family: Comic Sans MS;
-			font-size: 2em;
-		}
+	input[type=text]:focus {
+		outline: none;
 	}
-	#home {
-		width: 70%;
-		height: 100%;
-		margin: auto;
-		text-align: center;
-		h1 {
-			padding-top: 2em;
-		}
-		p {
-			padding-top: 1em;
-			padding-bottom: 1em;
-			font-size: 2em;
-		}
-		button {
-			width: 50%;
-			height: 2em;
-			font-size: 2em;
-		}
+	p {
+		padding-top: 1em;
+		padding-bottom: 1em;
+		font-size: 2em;
 	}
-	#draw {
-		height: 100%;
-		overflow-y: scroll;
-		#mySketcher {
-			width: 100%;
-			background-color: white;
-			border: 1px solid black;
-		}
-	}
-	#message {
-		height: 100%;
-		margin: auto;
-		text-align: center;
-		h1 {
-			padding-top: 2em;
-		}
-		input[type=text] {
-			font-size: 3em;
-			margin-top: 1.5em;
-			margin-bottom: 1.5em;
-			width: 50%;
-			height: 50%;
-			border: 1px solid black;
-		}
-		input[type=text]:focus {
-			outline: none;
-		}
-		p {
-			padding-top: 1em;
-			padding-bottom: 1em;
-			font-size: 2em;
-		}
-	}
-	.nextButton {
-		width: 25%;
-		margin: auto;
-		height: 2em;
-		font-size: 1.5em;
-	}
+}
+.nextButton {
+	width: 25%;
+	margin: auto;
+	height: 2em;
+	font-size: 1.5em;
+}
+canvas {
+	background-color: white;
+	border: 1px solid black;
 }
