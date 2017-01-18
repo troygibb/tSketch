@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeAtramentOption } from './actions';
+import InputRange from 'react-input-range';
+import { HuePicker } from 'react-color';
+// import reactInputRangeStyling from '../node_modules/react-input-range/scss/InputRange.scss'
 
 class AtramentOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: true,
+      fullScreenMode: false,
     }
     this.changeMode = this.changeMode.bind(this);
     this.changeSmooth = this.changeSmooth.bind(this);
     this.changeWidth = this.changeWidth.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.changeColor = this.changeColor.bind(this);
-    this.toggleCollapsed = this.toggleCollapsed.bind(this);
+    this.toggleFullScreen = this.toggleFullScreen.bind(this);
   }
   changeMode(event) {
     this.props.changeAtramentOption('mode', event.target.value);
@@ -30,34 +33,49 @@ class AtramentOptions extends React.Component {
   clearCanvas() {
     this.props.changeAtramentOption('clearing', true);
   }
-  changeColor(event) {
-    this.props.changeAtramentOption('color', event.target.value);
+  changeColor(color) {
+    this.props.changeAtramentOption('color', color.hex);
   }
-  toggleCollapsed() {
+  toggleFullScreen() {
+    var canvas = document.getElementById("draw");
+    if (!this.state.fullScreenMode) {
+      if (canvas.requestFullScreen) {
+        canvas.requestFullScreen();
+      } else if (canvas.webkitRequestFullScreen) {
+        canvas.webkitRequestFullScreen();
+      } else if (canvas.mozRequestFullScreen) {
+        canvas.mozRequestFullScreen();
+      }
+    } else {
+      if (canvas.requestFullScreen) {
+        document.requestFullScreen();
+      } else if (canvas.webkitRequestFullScreen) {
+        document.webkitExitFullscreen();
+      } else if (canvas.mozRequestFullScreen) {
+        document.mozRequestFullScreen();
+      }
+    }
     this.setState({
-      collapsed: !this.state.collapsed
+      fullScreenMode: !this.state.fullScreenMode
     })
   }
   render() {
     const { atramentOptions } = this.props;
     return (
       <div id="atramentOptions">
-        <a id="collapseToggle" onClick= { this.toggleCollapsed } data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          <span style= {{ 'fontize': this.state.collapsed ? '1.5em' : '1em' }}>
-            { this.state.collapsed ? 'Show Tools' : 'Hide Tools' }
-          </span>
-        </a>
-        <div id="options" className="collapse" id="collapseExample">
-          <span>Color:</span>
-          <input type="color" onChange={this.changeColor} />
-          <br />
+        <form id="options">
+          <HuePicker
+            id="colorPicker"
+            color={ atramentOptions.color }
+            onChange={ this.changeColor }
+          />
           <span>Mode:</span>
           <select onChange={this.changeMode}>
             <option value="draw">Draw</option>
             <option value="fill">Fill</option>
             <option value="erase">Erase</option>
           </select>
-          <br/>
+          
           <span>Smoothing:</span>
           <input
             onChange={this.changeSmooth}
@@ -65,12 +83,20 @@ class AtramentOptions extends React.Component {
             name="cbox1"
             checked={atramentOptions.smoothing}
           />
-          <br/>
+          
           <span>Stroke width:</span>
-          <input type="text" id="weightField" onChange={this.changeWidth}/>
-          <br/>
+          <input 
+            type="range"
+            min="1"
+            max="40"
+            value= {this.props.atramentOptions.weight}
+            onChange={this.changeWidth}
+          />
           <button onClick={this.clearCanvas}>Clear</button>
-        </div>
+          <a href="#" onClick={this.toggleFullScreen}>
+            { this.state.fullScreenMode ? 'Exit FullScreen' : 'Go FullScreen'}
+          </a>
+        </form>
       </div>
     );
   }
@@ -80,5 +106,15 @@ class AtramentOptions extends React.Component {
 const mapStateToProps = (state) => {
   return { atramentOptions: state.atramentOptions };
 };
+
+/*
+
+<InputRange
+            minValue={0}
+            maxValue={20}
+            value= {this.props.atramentOptions.weight}
+            onChange={this.changeWidth}
+          />
+*/
 
 export default connect(mapStateToProps, { changeAtramentOption })(AtramentOptions);

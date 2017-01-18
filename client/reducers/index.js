@@ -5,10 +5,12 @@ const intitialState = {
     weight: 10,
     opacity: 1,
     clearing: false,
+    color: '#ff0068',
   },
   message: '',
   postcardImage: null,
   orderResponse: {},
+  overCharacterLimit: false,
 };
 
 const actionHandler = {

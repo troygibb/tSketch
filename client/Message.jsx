@@ -11,8 +11,13 @@ class Message extends React.Component {
 		this.changeMessage = this.changeMessage.bind(this);
 	}
 	changeMessage(event) {
-		const newText = event.target.value
-		this.props.changeMessage(newText);
+		const newText = event.target.value;
+		console.log(newText.length);
+		if (newText.length > 355) {
+			// dispatch action to change store value 'overCharacterLimit' to true
+		} else {
+			this.props.changeMessage(newText);
+		}
 	}
 	render() {
 		const { message } = this.props; 
