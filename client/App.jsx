@@ -11,6 +11,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Draw from './Draw';
 import Message from './Message';
+import ConfirmPage from './ConfirmPage';
 import Success from './Success';
 
 const finalStore = applyMiddleware(thunk)(createStore);
@@ -26,6 +27,7 @@ class App extends React.Component {
               <IndexRoute component={Home} />
               <Route path="/draw" component={Draw} />
               <Route path="/message" component={Message} />
+              <Route path="/confirm" component={ConfirmPage} />
               <Route path="/doodle-success" component={Success} />
             </Route>
           </Router>

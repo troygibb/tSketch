@@ -36,4 +36,13 @@ Order.add({
   },
 });
 
+// Error handling for messages over 355 characters.
+Order.schema.pre('save', (next) => {
+  if (this.message.length > 355) {
+    next('ERROR: Message length over 355 characters')
+  } else { 
+    next()
+  }
+});
+
 Order.register();

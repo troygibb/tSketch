@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { changeMessage } from './actions/index';
-
-import ProcessOrder from './ProcessOrder';
 
 class Message extends React.Component {
 	constructor(props) {
@@ -12,10 +11,8 @@ class Message extends React.Component {
 	}
 	changeMessage(event) {
 		const newText = event.target.value;
-		console.log(newText.length);
-		if (newText.length > 355) {
-			// dispatch action to change store value 'overCharacterLimit' to true
-		} else {
+		// TODO: Check to make sure equal or less than 355
+		if (newText.length <= 355) {
 			this.props.changeMessage(newText);
 		}
 	}
@@ -24,8 +21,10 @@ class Message extends React.Component {
 		return (
 			<div id="message">				
 				<textarea id="message-input" value={ message } onChange={this.changeMessage} placeholder="Dear Mr. Trump..."/>
-				<div>355 Character Limit</div>
-				<ProcessOrder />
+				<div>{ 355 - message.length } Characters Left</div>
+				<Link to="/confirm">
+					<button className="nextButton">Next</button>
+				</Link>
 			</div>
 		);
 	}
