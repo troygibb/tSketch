@@ -24,7 +24,7 @@ class App extends React.Component {
             <Route path='/' component={ Navbar }>
               <IndexRoute component={ Home } />
               <Route path='/draw' component={ Draw } />
-              <Route path='/message' component={ Message} />
+              <Route path='/message' component={ Message } />
             </Route>
           </Router>
         </Provider>
