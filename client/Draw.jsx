@@ -1,8 +1,8 @@
+import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import AT from './lib/atrament';
-import _ from 'lodash';
 
 import { assignAtrament, changeAtramentOption, savePostcardImage } from './actions/index';
 import AtramentOptions from './AtramentOptions';
