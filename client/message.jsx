@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { changeMessage } from './actions/index';
 
-import GetMoney from './getMoney';
+import ProcessOrder from './ProcessOrder';
 
 class Message extends React.Component {
 	constructor(props) {
@@ -20,7 +20,7 @@ class Message extends React.Component {
 			<div id="message">				
 				<textarea id="message-input" value={ message } onChange={this.changeMessage} placeholder="Dear Mr. Trump..."/>
 				<div>355 Character Limit</div>
-				<GetMoney />
+				<ProcessOrder />
 			</div>
 		);
 	}
