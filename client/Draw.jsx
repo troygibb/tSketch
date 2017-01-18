@@ -30,13 +30,17 @@ class Draw extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div id="draw">
-          <AtramentOptions />
-          <canvas id="mySketcher" />
+      <div className="container" >
+        <div className="row" id="draw">
+          <div className="col-md-8">
+            <canvas id="mySketcher" />
+          </div>
+          <div className="col-md-4 text-left">
+            <AtramentOptions />
+          </div>
         </div>
         <Link to="/message">
-          <button onClick={this.saveImage} className="nextButton">Next</button>
+          <button onClick={this.saveImage} className="btn btn-small btn-success pull-right">Save & Next</button>
         </Link>
       </div>
     )
