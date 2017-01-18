@@ -7,10 +7,12 @@ const Types = keystone.Field.Types;
  * ==========
  */
 const Order = new keystone.List('Order', {
-  defaultColumns: 'name, email, isAdmin',
+  defaultColumns: 'email, createdAt',
+  defaultSort: '-createdAt',
   nocreate: true,
   noedit: true,
   nodelete: true,
+  track: true,
 });
 
 Order.add({
