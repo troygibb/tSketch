@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 
 import { completeOrder } from './actions/index';
 
-class GetMoney extends React.Component {
+class ProcessOrder extends React.Component {
   constructor(props) {
     super(props);
     this.onToken = this.onToken.bind(this);
@@ -38,4 +38,4 @@ const mapStateToProps = (currentState) => {
     postcardImage: currentState.postcardImage,
   };
 };
-export default connect(mapStateToProps, { completeOrder })(GetMoney);
+export default connect(mapStateToProps, { completeOrder })(ProcessOrder);

@@ -17,7 +17,7 @@ const PATHS = {
 const common = {
   target: 'web',
   entry: {
-    app: `${PATHS.app}/app.jsx`,
+    app: `${PATHS.app}/App.jsx`,
     style: `${PATHS.style}/main.scss`,
     vendor: `${PATHS.vendor}/vendor.js`,
   },

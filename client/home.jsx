@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Atrament from './atrament';
 
 class Home extends React.Component {
 	constructor(props) {
