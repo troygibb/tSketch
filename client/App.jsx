@@ -10,7 +10,7 @@ import reducer from './reducers/index';
 import Navbar from './Navbar';
 import Home from './Home';
 import Draw from './Draw';
-import Message from './message';
+import Message from './Message';
 
 const finalStore = applyMiddleware(thunk)(createStore);
 const store = finalStore(reducer);
@@ -21,10 +21,10 @@ class App extends React.Component {
       <div>
         <Provider store={store}>
           <Router history={hashHistory}>
-            <Route path='/' component={ Navbar }>
-              <IndexRoute component={ Home } />
-              <Route path='/draw' component={ Draw } />
-              <Route path='/message' component={ Message } />
+            <Route path="/" component={Navbar}>
+              <IndexRoute component={Home} />
+              <Route path="/draw" component={Draw} />
+              <Route path="/message" component={Message} />
             </Route>
           </Router>
         </Provider>

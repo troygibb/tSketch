@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AT from 'atrament';
-
 import { changeAtramentOption } from './actions';
 
 class AtramentOptions extends React.Component {
