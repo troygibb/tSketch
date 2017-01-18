@@ -13,7 +13,7 @@ class Draw extends React.Component {
     this.saveImage = this.saveImage.bind(this);
   }
   componentDidMount() {
-    this.atrament = AT('#mySketcher', 1875, 1275, 'black');
+    this.atrament = AT('#mySketcher', 1275, 1875, 'black');
     _.extend(this.atrament, this.props.atramentOptions);
   }
   componentWillReceiveProps(nextProps) {

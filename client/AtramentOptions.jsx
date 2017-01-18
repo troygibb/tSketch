@@ -74,20 +74,9 @@ class AtramentOptions extends React.Component {
           <span>Mode:</span>
           <select onChange={this.changeMode}>
             <option value="draw">Draw</option>
-            <option value="fill">Fill</option>
             <option value="erase">Erase</option>
           </select>
-          
-          <span>Smoothing:</span>
           <input
-            onChange={this.changeSmooth}
-            type="checkbox"
-            name="cbox1"
-            checked={atramentOptions.smoothing}
-          />
-          
-          <span>Stroke width:</span>
-          <input 
             type="range"
             min="1"
             max="40"
