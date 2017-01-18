@@ -35,6 +35,9 @@ body {
 		border-radius: 5%;
 		padding: 10px;
 		font-weight: bold;
+		#colorPicker {
+			position: absolute;
+		}
 		#weightField {
 			width: 2em;
 		}
