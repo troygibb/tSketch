@@ -55,10 +55,32 @@ html,body {
 	width: 100%;
 	background-color: white;
 	border-bottom: 1px solid rgb(46, 52, 95);
-	font-family: Comic Sans MS;
-	font-size: 30px;
 	color: rgb(46, 52, 95);
 	padding: 10px 0px;
+}
+.logo{
+	font-family: Comic Sans MS;
+	font-size: 30px;
+}
+.checkoutProgress{
+	width: 300px;
+	max-width: calc(100% - 300px);
+	margin-top: 10px;
+	margin-bottom: 0px;
+	float: right;
+	height: 20px;
+	text-align: right;
+	&__label{
+		display: inline-block;
+		margin-right: 5px;
+	}
+	.progress{
+		display: inline-block;
+		max-width: calc(100% - 100px);
+		margin-bottom: 0px;
+		width: 100%;
+		vertical-align: top;
+	}
 }
 
 // drawing
