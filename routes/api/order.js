@@ -14,7 +14,7 @@ function orderAPI(req, res) {
   // Check data
   const email = req.body.email;
   const postcardImage = req.body.postcardImage;
-  const message = req.body.message;
+  const message = req.body.message || 'To Mr. Trump:';
   const stripeToken = req.body.stripeToken;
   if (!utils.isEmail(email) ||
       !utils.isObject(postcardImage) ||
@@ -81,12 +81,28 @@ function orderAPI(req, res) {
     });
   }
   // Email receipt
+  function emailReceipt(callback) {
+    const data = {
+      from: 'Doodle Master <doodlemaster@drawtrumpadoodle.com>',
+      to: order.email,
+      subject: 'You Doodle Has Been Received! 🎉  🎊  🎁',
+      text: 'We have successfully recieved your doodle! It will be on its way to the whitehouse soon!!',
+    };
+
+    mailgun.messages().send(data, (err) => {
+      if (err) {
+        console.log(err);
+      }
+      callback();
+    });
+  }
+
 
   async.series([
-    // uploadPostcardImage,
     chargeCreditCard,
     sendPostcard,
     saveOrder,
+    emailReceipt,
   ], (err, result) => {
     if (err) {
       console.log(err);
