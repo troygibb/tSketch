@@ -47,6 +47,7 @@ module.exports = function routesIndex(app) {
   app.post('/api/order', keystone.middleware.api, routes.api.order);
   app.post('/api/verify-address', keystone.middleware.api, routes.api.verifyAddress);
 
+  // React-router handler for client endpoints (e.g. '/message', '/draw')
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
   });
