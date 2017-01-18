@@ -8,9 +8,11 @@ class Navbar extends React.Component {
 		return (
 			<div>
 				<div id="navbar" >
-					<a href="#">
-		        DrawTrumpADoodle!
-		      </a>
+					<div className='container'>
+							<a href="#">
+				        DrawTrumpADoodle!
+				      </a>
+					</div>
 			  </div>
 				{ this.props.children }
 			</div>
@@ -18,4 +20,4 @@ class Navbar extends React.Component {
 	}
 }
 
-export default Navbar; 
+export default Navbar;
