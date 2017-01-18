@@ -15,7 +15,7 @@ class AdditionalAddress extends React.Component {
 	}
 	changeAddress(event) {
 		// Validating zipcode for 5-digits.
-		if (event.target.name === 'zipcode') {
+		if (event.target.name === 'address_zip') {
 			if (/^\d{1,5}$/.test(event.target.value)) {
 				this.props.changeAddress(event.target.name, event.target.value);
 			}
@@ -29,18 +29,18 @@ class AdditionalAddress extends React.Component {
 		})
 	}
 	render() {
-		const { recipient, address1, address2, city, zipcode } = this.props;
+		const { name, address_line1, address_line2, address_city, address_zip } = this.props;
 		return (
 			<div>
 				<span>Add additional address?</span><input onClick={this.showAdditionalAddress} type="checkbox" />
 				{	this.state.showAdditionalAddress ?
 					<div id="additional-address-field">
-						<input value={recipient} onChange={this.changeAddress} name="recipient" placeholder="Recipient" type="text" />
-						<input value={address1} onChange={this.changeAddress} name="address1" placeholder="Address Line 1" type="text" />
-						<input value={address2} onChange={this.changeAddress} name="address2" placeholder="Address Line 2" type="text" />
-						<input value={city} onChange={this.changeAddress} name="city" placeholder="City" type="text" />
+						<input value={name} onChange={this.changeAddress} name="name" placeholder="name" type="text" />
+						<input value={address_line1} onChange={this.changeAddress} name="address_line1" placeholder="Address Line 1" type="text" />
+						<input value={address_line2} onChange={this.changeAddress} name="address_line2" placeholder="Address Line 2" type="text" />
+						<input value={address_city} onChange={this.changeAddress} name="address_city" placeholder="City" type="text" />
 						<span>Select state:</span><StateSelector />
-						<input value={zipcode} onChange={this.changeAddress} name="zipcode" placeholder="Zipcode" type="text" />
+						<input value={address_zip} onChange={this.changeAddress} name="address_zip" placeholder="Zipcode" type="text" />
 						<span>*Currently only allowing addresses within the United States</span>
 					</div>
 					: false
@@ -50,14 +50,24 @@ class AdditionalAddress extends React.Component {
 	}
 }
 
+/*
+name: '',
+    address_line1: '',
+    address_line2: '',
+    address_city: '',
+    address_state: '',
+    address_zip: '',
+
+*/
+
 const mapStateToProps = (currentState) => {
-	const { recipient, address1, address2, city, zipcode } = currentState.additionalAddress;
+	const { name, address_line1, address_line2, address_city, address_zip } = currentState.additionalAddress;
   return {
-  	recipient,
-  	address1, 
-  	address2, 
-  	city, 
-  	zipcode,
+  	name,
+  	address_line1, 
+  	address_line2, 
+  	address_city, 
+  	address_zip,
   };
 };
 

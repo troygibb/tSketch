@@ -12,12 +12,12 @@ const intitialState = {
   orderResponse: {},
   overCharacterLimit: false,
   additionalAddress: {
-    recipient: '',
-    address1: '',
-    address2: '',
-    city: '',
-    state: '',
-    zipcode: '',
+    name: '',
+    address_line1: '',
+    address_line2: '',
+    address_city: '',
+    address_state: '',
+    address_zip: '',
   },
 };
 
