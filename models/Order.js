@@ -34,15 +34,39 @@ Order.add({
     type: Types.Text,
     required: true,
   },
+  additionalPostcardId: {
+    type: Types.Text,
+  },
+  additionalAddress: {
+    address_line1: {
+      type: Types.Text,
+    },
+    address_line2: {
+      type: Types.Text,
+    },
+    address_city: {
+      type: Types.Text,
+    },
+    address_state: {
+      type: Types.Text,
+    },
+    address_zip: {
+      type: Types.Text,
+    },
+    address_country: {
+      type: Types.Text,
+    },
+  },
 });
 
 // Error handling for messages over 355 characters.
-Order.schema.pre('save', (next) => {
+function validateMessageLength(next) {
   if (this.message.length > 355) {
-    next('ERROR: Message length over 355 characters')
-  } else { 
-    next()
+    next('ERROR: Message length over 355 characters');
+  } else {
+    next();
   }
-});
+}
+Order.schema.pre('save', validateMessageLength);
 
 Order.register();
