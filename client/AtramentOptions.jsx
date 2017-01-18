@@ -30,13 +30,15 @@ class AtramentOptions extends React.Component {
     const newWeight = Number(event.target.value);
     this.props.changeAtramentOption('weight', newWeight);
   }
-  clearCanvas() {
+  clearCanvas(event) {
+    event.preventDefault();
     this.props.changeAtramentOption('clearing', true);
   }
   changeColor(color) {
     this.props.changeAtramentOption('color', color.hex);
   }
-  toggleFullScreen() {
+  toggleFullScreen(event) {
+    event.preventDefault();
     var canvas = document.getElementById("draw");
     if (!this.state.fullScreenMode) {
       if (canvas.requestFullScreen) {
@@ -93,9 +95,9 @@ class AtramentOptions extends React.Component {
             onChange={this.changeWidth}
           />
           <button onClick={this.clearCanvas}>Clear</button>
-          <a href="#" onClick={this.toggleFullScreen}>
+          <button href="#" onClick={this.toggleFullScreen}>
             { this.state.fullScreenMode ? 'Exit FullScreen' : 'Go FullScreen'}
-          </a>
+          </button>
         </form>
       </div>
     );
