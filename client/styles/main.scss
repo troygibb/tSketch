@@ -84,6 +84,7 @@ html,body {
 		background: rgb(46,52,95);
 		padding: 15px;
 		color: white;
+		margin-bottom: 15px;
 	}
 	&__select{
 		color: black;
@@ -91,6 +92,16 @@ html,body {
 		margin-bottom: 10px;
 	}
 }
+.message{
+	&__field{
+		width: 100%;
+		height: 150px;
+	}
+}
+.bodyWrapper{
+	margin: 15px auto !important;
+}
+
 #draw {
 	text-align: center;
 	#mySketcher {

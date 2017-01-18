@@ -17,14 +17,19 @@ class Message extends React.Component {
 		}
 	}
 	render() {
-		const { message } = this.props; 
+		const { message } = this.props;
 		return (
-			<div id="message">				
-				<textarea id="message-input" value={ message } onChange={this.changeMessage} placeholder="Dear Mr. Trump..."/>
-				<div>{ 355 - message.length } Characters Left</div>
-				<Link to="/confirm">
-					<button className="nextButton">Next</button>
-				</Link>
+			<div  className="bodyWrapper container" id="message">
+				<div className="row">
+					<div className="col-md-6 col-md-offset-3">
+						<h2>Write Your Message</h2>
+						<textarea className="message__field"  id="message-input" value={ message } onChange={this.changeMessage} placeholder="Dear Mr. Trump..."/>
+						<div>{ 355 - message.length } Characters Left</div>
+						<Link to="/confirm">
+							<button className="btn btn-lg btn-success btn-block">Next</button>
+						</Link>
+					</div>
+				</div>
 			</div>
 		);
 	}
