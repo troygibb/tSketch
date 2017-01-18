@@ -47,7 +47,7 @@ export const changeAddress = (change, changeValue) => {
 //   }
 // }
 
-export const completeOrder = ({ stripeToken, email, postcardImage, message }) => {
+export const completeOrder = ({ stripeToken, email, postcardImage, message, additionalAddress }) => {
   return (dispatch) => {
     // Upload image to cloudinary
     ajax({
@@ -65,10 +65,11 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message }) =>
         url: '/api/order',
         dataType: 'json',
         data: {
+          postcardImage: uploadData,
           stripeToken,
           email,
-          postcardImage: uploadData,
           message,
+          additionalAddress,
         },
       });
     })

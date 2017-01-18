@@ -19,6 +19,7 @@ class ProcessOrder extends React.Component {
       stripeToken,
       postcardImage,
       message,
+      additionalAddress,
     });
   }
   render() {
@@ -36,6 +37,7 @@ const mapStateToProps = (currentState) => {
   return {
     message: currentState.message,
     postcardImage: currentState.postcardImage,
+    additionalAddress: currentState.additionalAddress,
   };
 };
 export default connect(mapStateToProps, { completeOrder })(ProcessOrder);
