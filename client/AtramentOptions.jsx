@@ -42,22 +42,17 @@ class AtramentOptions extends React.Component {
     const { atramentOptions } = this.props;
     return (
       <div id="atramentOptions">
-        <a id="collapseToggle" onClick= { this.toggleCollapsed } data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          <span style= {{ 'fontize': this.state.collapsed ? '1.5em' : '1em' }}>
-            { this.state.collapsed ? 'Show Tools' : 'Hide Tools' }
-          </span>
-        </a>
-        <div id="options" className="collapse" id="collapseExample">
+        <div id="options">
           <span>Color:</span>
           <input type="color" onChange={this.changeColor} />
-          <br />
+
           <span>Mode:</span>
           <select onChange={this.changeMode}>
             <option value="draw">Draw</option>
             <option value="fill">Fill</option>
             <option value="erase">Erase</option>
           </select>
-          <br/>
+          
           <span>Smoothing:</span>
           <input
             onChange={this.changeSmooth}
@@ -65,10 +60,10 @@ class AtramentOptions extends React.Component {
             name="cbox1"
             checked={atramentOptions.smoothing}
           />
-          <br/>
+          
           <span>Stroke width:</span>
           <input type="text" id="weightField" onChange={this.changeWidth}/>
-          <br/>
+          
           <button onClick={this.clearCanvas}>Clear</button>
         </div>
       </div>
