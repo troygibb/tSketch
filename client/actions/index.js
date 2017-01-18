@@ -31,6 +31,22 @@ export const showSuccessPage = (orderResponse) => {
   };
 };
 
+export const changeAddress = (change, changeValue) => {
+  return {
+    type: 'CHANGE-ADDRESS',
+    change,
+    changeValue,
+  }
+};
+// TODO: Complete verifiy address server query
+// export const verifyAddress = (addressObject) => {
+//   return (dispatch) => {
+//     ajax({
+
+//     })
+//   }
+// }
+
 export const completeOrder = ({ stripeToken, email, postcardImage, message }) => {
   return (dispatch) => {
     // Upload image to cloudinary
