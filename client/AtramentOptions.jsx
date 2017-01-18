@@ -8,11 +8,15 @@ import { HuePicker } from 'react-color';
 class AtramentOptions extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fullScreenMode: false,
+    }
     this.changeMode = this.changeMode.bind(this);
     this.changeSmooth = this.changeSmooth.bind(this);
     this.changeWidth = this.changeWidth.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.changeColor = this.changeColor.bind(this);
+    this.toggleFullScreen = this.toggleFullScreen.bind(this);
   }
   changeMode(event) {
     this.props.changeAtramentOption('mode', event.target.value);
@@ -32,15 +36,28 @@ class AtramentOptions extends React.Component {
   changeColor(color) {
     this.props.changeAtramentOption('color', color.hex);
   }
-  goFullScreen() {
+  toggleFullScreen() {
     var canvas = document.getElementById("draw");
-    if (canvas.requestFullScreen) {
-      canvas.requestFullScreen();
-    } else if (canvas.webkitRequestFullScreen) {
-      canvas.webkitRequestFullScreen();
-    } else if (canvas.mozRequestFullScreen) {
-      canvas.mozRequestFullScreen();
+    if (!this.state.fullScreenMode) {
+      if (canvas.requestFullScreen) {
+        canvas.requestFullScreen();
+      } else if (canvas.webkitRequestFullScreen) {
+        canvas.webkitRequestFullScreen();
+      } else if (canvas.mozRequestFullScreen) {
+        canvas.mozRequestFullScreen();
+      }
+    } else {
+      if (canvas.requestFullScreen) {
+        document.requestFullScreen();
+      } else if (canvas.webkitRequestFullScreen) {
+        document.webkitExitFullscreen();
+      } else if (canvas.mozRequestFullScreen) {
+        document.mozRequestFullScreen();
+      }
     }
+    this.setState({
+      fullScreenMode: !this.state.fullScreenMode
+    })
   }
   render() {
     const { atramentOptions } = this.props;
@@ -76,7 +93,9 @@ class AtramentOptions extends React.Component {
             onChange={this.changeWidth}
           />
           <button onClick={this.clearCanvas}>Clear</button>
-          <button onClick={this.goFullScreen}>Go Fullscreen</button>
+          <a href="#" onClick={this.toggleFullScreen}>
+            { this.state.fullScreenMode ? 'Exit FullScreen' : 'Go FullScreen'}
+          </a>
         </form>
       </div>
     );
