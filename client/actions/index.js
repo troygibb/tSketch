@@ -1,4 +1,5 @@
 import { ajax } from 'jquery';
+import { browserHistory } from 'react-router';
 
 export const changeAtramentOption = (change, changeValue) => {
   return {
@@ -22,6 +23,14 @@ export const changeMessage = (message) => {
   };
 };
 
+export const showSuccessPage = (orderResponse) => {
+  browserHistory.push('/doodle-success');
+  return {
+    type: 'SHOW-SUCCESS-PAGE',
+    orderResponse,
+  };
+};
+
 export const completeOrder = ({ stripeToken, email, postcardImage, message }) => {
   return (dispatch) => {
     // Upload image to cloudinary
@@ -33,7 +42,7 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message }) =>
         upload_preset: CLOUDINARY_UPLOAD_PRESET,
       },
     })
-    .done((uploadData) => {
+    .then((uploadData) => {
       // Process the order
       return ajax({
         type: 'POST',
@@ -47,8 +56,8 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message }) =>
         },
       });
     })
-    .done((uploadData, orderResponse) => {
-      console.log(orderResponse);
+    .then((orderResponse) => {
+      dispatch(showSuccessPage(orderResponse));
       console.log('success');
     })
     .fail((err) => {

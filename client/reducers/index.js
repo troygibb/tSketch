@@ -1,5 +1,4 @@
 const intitialState = {
-  lc: {},
   atramentOptions: {
     mode: 'draw',
     smoothing: false,
@@ -9,6 +8,7 @@ const intitialState = {
   },
   message: '',
   postcardImage: null,
+  orderResponse: {},
 };
 
 const actionHandler = {
@@ -27,6 +27,12 @@ const actionHandler = {
     return {
       ...previousState,
       postcardImage: action.postcardImage,
+    };
+  },
+  'SHOW-SUCCESS-PAGE': (previousState, action) => {
+    return {
+      ...previousState,
+      orderResponse: action.orderResponse,
     };
   },
 };
