@@ -36,7 +36,14 @@ export const changeAddress = (change, changeValue) => {
     type: 'CHANGE-ADDRESS',
     change,
     changeValue,
-  }
+  };
+};
+
+export const toggleAdditionalAddress = (showAdditionalAddress) => {
+  return {
+    type: 'TOGGLE-ADDITIONAL-ADDRESS',
+    showAdditionalAddress
+  };
 };
 // TODO: Complete verifiy address server query
 // export const verifyAddress = (addressObject) => {

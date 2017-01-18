@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import StateSelector from './StateSelector';
-import { changeAddress } from './actions';
+import { changeAddress, toggleAdditionalAddress } from './actions';
 
 class AdditionalAddress extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			showAdditionalAddress: false,
-		}
 		this.changeAddress = this.changeAddress.bind(this);
-		this.showAdditionalAddress = this.showAdditionalAddress.bind(this);
+		this.toggleAdditionalAddress = this.toggleAdditionalAddress.bind(this);
 	}
 	changeAddress(event) {
 		// Validating zipcode for 5-digits.
@@ -23,17 +20,22 @@ class AdditionalAddress extends React.Component {
 			this.props.changeAddress(event.target.name, event.target.value);
 		}
 	}
-	showAdditionalAddress(event) {
-		this.setState({
-			showAdditionalAddress: event.target.checked
-		})
+	toggleAdditionalAddress(event) {
+		this.props.toggleAdditionalAddress(event.target.checked)
 	}
 	render() {
-		const { name, address_line1, address_line2, address_city, address_zip } = this.props;
+		const { 
+			showAdditionalAddress, 
+			name, 
+			address_line1, 
+			address_line2, 
+			address_city, 
+			address_zip 
+		} = this.props;
 		return (
 			<div>
-				<span>Add additional address?</span><input onClick={this.showAdditionalAddress} type="checkbox" />
-				{	this.state.showAdditionalAddress ?
+				<span>Add additional address?</span><input onClick={this.toggleAdditionalAddress} type="checkbox" />
+				{	showAdditionalAddress ?
 					<div id="additional-address-field">
 						<input value={name} onChange={this.changeAddress} name="name" placeholder="name" type="text" />
 						<input value={address_line1} onChange={this.changeAddress} name="address_line1" placeholder="Address Line 1" type="text" />
@@ -50,19 +52,10 @@ class AdditionalAddress extends React.Component {
 	}
 }
 
-/*
-name: '',
-    address_line1: '',
-    address_line2: '',
-    address_city: '',
-    address_state: '',
-    address_zip: '',
-
-*/
-
 const mapStateToProps = (currentState) => {
 	const { name, address_line1, address_line2, address_city, address_zip } = currentState.additionalAddress;
   return {
+  	showAdditionalAddress: currentState.showAdditionalAddress,
   	name,
   	address_line1, 
   	address_line2, 
@@ -71,4 +64,4 @@ const mapStateToProps = (currentState) => {
   };
 };
 
-export default connect(mapStateToProps, { changeAddress })(AdditionalAddress);
+export default connect(mapStateToProps, { changeAddress, toggleAdditionalAddress })(AdditionalAddress);

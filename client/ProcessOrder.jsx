@@ -15,12 +15,13 @@ class ProcessOrder extends React.Component {
     const postcardImage = this.props.postcardImage;
     const message = this.props.message;
     const additionalAddress = this.props.additionalAddress;
+    const showAdditionalAddress = this.props.showAdditionalAddress;
     this.props.completeOrder({
+      additionalAddress: showAdditionalAddress ? additionalAddress : {},
       email,
       stripeToken,
       postcardImage,
       message,
-      additionalAddress,
     });
   }
   render() {
@@ -39,6 +40,7 @@ const mapStateToProps = (currentState) => {
     message: currentState.message,
     postcardImage: currentState.postcardImage,
     additionalAddress: currentState.additionalAddress,
+    showAdditionalAddress: currentState.showAdditionalAddress,
   };
 };
 export default connect(mapStateToProps, { completeOrder })(ProcessOrder);

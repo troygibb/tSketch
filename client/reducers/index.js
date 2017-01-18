@@ -11,6 +11,7 @@ const intitialState = {
   postcardImage: null,
   orderResponse: {},
   overCharacterLimit: false,
+  showAdditionalAddress: false,
   additionalAddress: {
     name: '',
     address_line1: '',
@@ -42,6 +43,12 @@ const actionHandler = {
     return {
       ...previousState,
       orderResponse: action.orderResponse,
+    };
+  },
+  'TOGGLE-ADDITIONAL-ADDRESS': (previousState, action) => {
+    return {
+      ...previousState,
+      showAdditionalAddress: action.showAdditionalAddress,
     };
   },
   'CHANGE-ADDRESS': (previousState, action) => {
