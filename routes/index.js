@@ -1,4 +1,5 @@
 const keystone = require('keystone');
+const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const importRoutes = keystone.importer(__dirname);
@@ -45,4 +46,8 @@ module.exports = function routesIndex(app) {
   // API
   app.post('/api/order', keystone.middleware.api, routes.api.order);
   app.post('/api/verify-address', keystone.middleware.api, routes.api.verifyAddress);
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+  });
 };
