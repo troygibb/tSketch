@@ -1,7 +1,8 @@
 // globals
 
-body {
+html,body {
   font-family: 'Montserrat', sans-serif;
+	height:100%;
 }
 
 // Home
@@ -54,12 +55,82 @@ body {
 	width: 100%;
 	background-color: white;
 	border-bottom: 1px solid rgb(46, 52, 95);
-	font-family: Comic Sans MS;
-	font-size: 30px;
 	color: rgb(46, 52, 95);
 	padding: 10px 0px;
 }
+.logo{
+	font-family: Comic Sans MS;
+	font-size: 30px;
+}
+.checkoutProgress{
+	width: 300px;
+	max-width: calc(100% - 300px);
+	margin-top: 10px;
+	margin-bottom: 0px;
+	float: right;
+	height: 20px;
+	text-align: right;
+	&__label{
+		display: inline-block;
+		margin-right: 5px;
+	}
+	.progress{
+		display: inline-block;
+		max-width: calc(100% - 100px);
+		margin-bottom: 0px;
+		width: 100%;
+		vertical-align: top;
+	}
+}
 
+// drawing
+.atrament{
+	&__widthControl{
+		display: inline-block !important;
+		width:  calc(100% - 100px) !important;
+		margin-left: 10px;
+		margin-bottom: 10px;
+		vertical-align: top;
+	}
+	&__colorWrapper{
+		display: block;
+		margin-bottom: 10px;
+	}
+	&__colorControl{
+		display: inline-block;
+		width: calc(100% - 80px) ;
+		margin-left: 10px;
+		vertical-align: middle;
+	}
+	&__wrapper{
+		background: rgb(46,52,95);
+		padding: 15px;
+		color: white;
+		margin-bottom: 15px;
+	}
+	&__select{
+		color: black;
+		margin-left: 10px;
+		margin-bottom: 10px;
+	}
+}
+.message{
+	&__field{
+		width: 100%;
+		height: 150px;
+	}
+}
+.bodyWrapper{
+	margin: 15px auto !important;
+}
+
+#draw {
+	text-align: center;
+	#mySketcher {
+		max-width: 100%;
+		max-height: calc(100vh - 60px);
+	}
+}
 
 
 #collapseToggle {
@@ -69,29 +140,8 @@ body {
 	text-decoration: none;
 }
 #atramentOptions {
-	margin-top: 1em;
-	margin-left: 1em;
-	position: absolute;
-	width: 15%;
-	background-color: #ddd;
-	display: inline-block;
-	text-align: left;
-	border-radius: 5%;
-	padding: 10px;
-	font-weight: bold;
-	#weightField {
-		width: 20%;
-	}
-	input {
-		margin-bottom: 0.5em;
-	}
-	select {
-		margin-bottom: 0.5em;
-	}
-	span {
-		margin-right: 0.5em;
-		margin-bottom: 1em;
-	}
+	position: relative;
+	height: 100%;
 }
 #main {
 	width: 100%;
@@ -101,15 +151,7 @@ body {
 		font-size: 2em;
 	}
 }
-#draw {
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	#mySketcher {
-		margin-top: 4em;
-		width: 100%;
-	}
-}
+
 #message {
 	height: 100%;
 	margin: auto;

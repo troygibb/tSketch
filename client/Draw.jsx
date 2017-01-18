@@ -13,7 +13,7 @@ class Draw extends React.Component {
     this.saveImage = this.saveImage.bind(this);
   }
   componentDidMount() {
-    this.atrament = AT('#mySketcher', 1875, 1275, 'black');
+    this.atrament = AT('#mySketcher', 1275, 1875, 'black');
     _.extend(this.atrament, this.props.atramentOptions);
   }
   componentWillReceiveProps(nextProps) {
@@ -30,14 +30,19 @@ class Draw extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div id="draw">
-          <AtramentOptions />
-          <canvas id="mySketcher" />
+      <div className="container" >
+        <div className="row bodyWrapper" id="draw">
+          <div className="col-md-8">
+            <canvas id="mySketcher" />
+          </div>
+          <div className="col-md-4 text-left">
+            <AtramentOptions />
+            <Link to="/message">
+              <button onClick={this.saveImage} className="btn btn-small btn-success pull-right">Save & Next</button>
+            </Link>
+          </div>
         </div>
-        <Link to="/message">
-          <button onClick={this.saveImage} className="nextButton">Next</button>
-        </Link>
+
       </div>
     )
   }
