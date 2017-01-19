@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeAtramentOption } from './actions';
-import InputRange from 'react-input-range';
 import { HuePicker } from 'react-color';
+import { changeAtramentOption } from './actions';
+
 // import reactInputRangeStyling from '../node_modules/react-input-range/scss/InputRange.scss'
 
 class AtramentOptions extends React.Component {
@@ -10,7 +10,7 @@ class AtramentOptions extends React.Component {
     super(props);
     this.state = {
       fullScreenMode: false,
-    }
+    };
     this.changeMode = this.changeMode.bind(this);
     this.changeSmooth = this.changeSmooth.bind(this);
     this.changeWidth = this.changeWidth.bind(this);
@@ -65,39 +65,41 @@ class AtramentOptions extends React.Component {
     const { atramentOptions } = this.props;
     return (
       <div id="atramentOptions">
-        <form id="options">
-          <HuePicker
-            id="colorPicker"
-            color={ atramentOptions.color }
-            onChange={ this.changeColor }
-          />
-          <span>Mode:</span>
-          <select onChange={this.changeMode}>
-            <option value="draw">Draw</option>
-            <option value="fill">Fill</option>
-            <option value="erase">Erase</option>
-          </select>
-          
-          <span>Smoothing:</span>
+        <form id="options" className="atrament__wrapper">
+          <span className="atrament__colorWrapper">
+          <span>Color:</span>
+            <span className="atrament__colorControl">
+              <HuePicker
+                width="100%"
+                id="colorPicker"
+                color={ atramentOptions.color }
+                onChange={ this.changeColor }
+              />
+            </span>
+          </span>
+          <div>
+            <span>Mode:</span>
+            <select className="atrament__select" onChange={this.changeMode}>
+              <option value="draw">Draw</option>
+              <option value="erase">Erase</option>
+            </select>
+          </div>
+          <div>
+          <span>Thickness:</span>
           <input
-            onChange={this.changeSmooth}
-            type="checkbox"
-            name="cbox1"
-            checked={atramentOptions.smoothing}
-          />
-          
-          <span>Stroke width:</span>
-          <input 
             type="range"
             min="1"
             max="40"
             value= {this.props.atramentOptions.weight}
             onChange={this.changeWidth}
+            className="atrament__widthControl"
           />
-          <button onClick={this.clearCanvas}>Clear</button>
-          <button href="#" onClick={this.toggleFullScreen}>
+
+          </div>
+          <button className="btn btn-sm btn-danger" onClick={this.clearCanvas}>Clear</button>
+          <a href="#" className="pull-right" onClick={this.toggleFullScreen}>
             { this.state.fullScreenMode ? 'Exit FullScreen' : 'Go FullScreen'}
-          </button>
+          </a>
         </form>
       </div>
     );
