@@ -106,7 +106,13 @@ const actionHandler = {
   'STORE-ORDERS': (previousState, action) => {
     return {
       ...previousState,
-      galleryData: action.results,
+      galleryData: [...previousState.galleryData, ...action.results],
+    };
+  },
+  'CLEAR-ORDERS': (previousState) => {
+    return {
+      ...previousState,
+      galleryData: [],
     };
   },
 };
