@@ -141,6 +141,23 @@ html,body {
 	margin: 15px auto !important;
 }
 
+.success {
+  &__thumbnail {
+    width: 100%;
+    min-height: 200px;
+    background-color: #FFF;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #eee;
+    padding: 10px;
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
 #draw {
 	text-align: center;
 	#mySketcher {
@@ -148,7 +165,6 @@ html,body {
 		max-height: calc(100vh - 60px);
 	}
 }
-
 
 #collapseToggle {
 	margin: 0;
