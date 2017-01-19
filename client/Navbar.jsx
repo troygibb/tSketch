@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer';
 
 class Navbar extends React.Component {
 	constructor(props) {
@@ -23,6 +24,7 @@ class Navbar extends React.Component {
 					</div>
 			  </div>
 				{ this.props.children }
+				<Footer/>
 			</div>
 		)
 	}

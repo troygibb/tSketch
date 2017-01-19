@@ -54,7 +54,7 @@ html,body {
 #navbar {
 	width: 100%;
 	background-color: white;
-	border-bottom: 1px solid rgb(46, 52, 95);
+	border-bottom: 3px solid rgb(46, 52, 95);
 	color: rgb(46, 52, 95);
 	padding: 10px 0px;
 }
@@ -81,6 +81,23 @@ html,body {
 		width: 100%;
 		vertical-align: top;
 	}
+}
+
+// Footer
+.footer{
+	&__wrapper{
+		background: #820408;
+		padding: 30px;
+		width: 100%;
+		color: white !important;
+		text-align: center;
+	}
+	&__github{
+		height: 40px;
+		margin-right: 5px;
+		color: white !important;
+	}
+
 }
 
 // drawing
