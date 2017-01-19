@@ -54,12 +54,25 @@ class Gallery extends React.Component {
   renderColumns(row) {
     return row.map((column) => {
       return (
-        <div key={column._id} className="col-md-4 gallery__item">
-          <img
-            alt="presentation"
-            className="doodle"
-            src={column.postcardImage.secure_url}
-          />
+        <div key={column._id} className="col-md-4">
+          <li className="item thumb interactive">
+            <a href="/">
+              <figure>
+                <figcaption className="text-overlay">
+                  <div className="info">
+                    <blockquote>
+                      <p>{column.message}</p>
+                    </blockquote>
+                  </div>
+                </figcaption>
+                <img
+                  alt="presentation"
+                  className="doodle"
+                  src={column.postcardImage.secure_url}
+                />
+              </figure>
+            </a>
+          </li>
         </div>
       );
     });
@@ -68,7 +81,7 @@ class Gallery extends React.Component {
     const rows = this.organizeRows();
     return rows.map((row) => {
       return (
-        <div key={uuid.v4()} className="row">
+        <div key={uuid.v4()} className="row items isotope col-3">
           { this.renderColumns(row) }
         </div>
       );
@@ -78,8 +91,10 @@ class Gallery extends React.Component {
     const { galleryData } = this.props;
     if (galleryData.length) {
       return (
-        <div className="container gallery">
+        <div className="container bodyWrapper gallery">
+
           { this.renderRows() }
+
           <div className="row">
             <div className="col-md-4 col-md-offset-4">
               <button className="btn btn-primary btn-block" onClick={this.loadMoreRows}>
