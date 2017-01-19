@@ -19,8 +19,19 @@ class ProcessOrder extends React.Component {
     const message = this.props.message;
     const additionalAddress = this.props.additionalAddress;
     const showAdditionalAddress = this.props.showAdditionalAddress;
+    let addressData = {};
+    if (showAdditionalAddress) {
+      addressData = {
+        name: additionalAddress.name,
+        address_line1: additionalAddress.address_line1,
+        address_line2: additionalAddress.address_line2,
+        address_city: additionalAddress.address_city,
+        address_state: additionalAddress.address_state,
+        address_zip: additionalAddress.address_zip,
+      };
+    }
     this.props.completeOrder({
-      additionalAddress: showAdditionalAddress ? additionalAddress : {},
+      additionalAddress: addressData,
       email,
       stripeToken,
       postcardImage,
