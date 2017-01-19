@@ -48,11 +48,12 @@ class AdditionalAddress extends React.Component {
     return (
       <div>
         <div className="checkbox">
-          <label htmlFor="additionalAddressCheckbox">
+          <label htmlFor="addressCheckbox">
             <input
-              id="additionalAddressCheckbox"
+              id="addressCheckbox"
               onClick={this.toggleAddress}
               type="checkbox"
+              value={showAddress}
             /> Send yourself a copy too?
           </label>
         </div>

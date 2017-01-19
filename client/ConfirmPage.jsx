@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import DisplayOrder from './DisplayOrder';
 import AdditionalAddress from './AdditionalAddress';
-import ProcessOrder from './ProcessOrder';
+import ProcessOrderButton from './ProcessOrderButton';
 import Loading from './Loading';
 
 class ConfirmPage extends React.Component {
@@ -11,17 +10,33 @@ class ConfirmPage extends React.Component {
     super(props);
   }
   renderConfirmation() {
+    let amount = 200; // $2.00 in cents
+    if (this.props.showAddress) {
+      amount *= 2;
+    }
     return (
       <div>
         <div className="row">
           <div className="col-md-6">
-            <DisplayOrder />
+            <img
+              alt="Your Doodle"
+              src={this.props.postcardImage}
+            />
           </div>
           <div className="col-md-6">
+            <div>
+              {this.props.message}
+            </div>
             <AdditionalAddress />
           </div>
         </div>
-        <ProcessOrder />
+        <div className="row">
+          <div className="col-md-4 col-md-offset-4">
+            <ProcessOrderButton
+              amount={amount}
+            />
+          </div>
+        </div>
       </div>
     );
   }
@@ -41,6 +56,9 @@ class ConfirmPage extends React.Component {
 const mapStateToProps = (currentState) => {
   return {
     orderLoading: currentState.orderLoading,
+    postcardImage: currentState.postcardImage,
+    message: currentState.message,
+    showAddress: currentState.showAddress,
   };
 };
 

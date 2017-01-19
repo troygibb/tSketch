@@ -40,10 +40,10 @@ class ProcessOrder extends React.Component {
     return (
       <div>
         <button
-          className="btn btn-primary"
+          className="btn btn-block btn-default"
           onClick={this.verifyAddress}
         >
-          Verify Additional Address
+          Verify Your Address
         </button>
       </div>
     );
@@ -51,8 +51,8 @@ class ProcessOrder extends React.Component {
   renderLoadingButton() {
     return (
       <div>
-        <button className="btn btn-primary">
-          Currently checking to make sure we can deliver to your address too...
+        <button className="btn btn-block btn-default" disabled>
+          Verifying Address...
         </button>
       </div>
     );
@@ -63,8 +63,9 @@ class ProcessOrder extends React.Component {
         <StripeCheckout
           token={this.onToken}
           stripeKey={STRIPE_PUBLIC_KEY}
+          amount={this.props.amount}
         >
-          <button className="nextButton">Place your order!</button>
+          <button className="btn btn-block btn-primary">Send Your Doodle!</button>
         </StripeCheckout>
         {(this.props.addressWarning) ?
           (<p>{this.props.addressWarning}</p>) : null
@@ -74,12 +75,12 @@ class ProcessOrder extends React.Component {
   }
   render() {
     const { showAddress, addressVerified, addressLoading } = this.props;
-    if (showAddress && !addressVerified) {
-      // Requesting a second postcard but the user hasn't verified their address yet
-      return this.renderVerifyAddressButton();
-    } else if (showAddress && addressLoading) {
+    if (showAddress && addressLoading) {
       // Currently verifying address
       return this.renderLoadingButton();
+    } else if (showAddress && !addressVerified) {
+      // Requesting a second postcard but the user hasn't verified their address yet
+      return this.renderVerifyAddressButton();
     }
     return this.renderPayButton();
   }
