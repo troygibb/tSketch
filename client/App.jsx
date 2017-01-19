@@ -3,17 +3,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import reducer from './reducers/index';
 
-import Navbar from './Navbar';
+import Layout from './Layout';
 import Home from './Home';
 import Draw from './Draw';
 import Message from './Message';
 import ConfirmPage from './ConfirmPage';
 import Success from './Success';
-import Footer from './Footer';
 
 
 const finalStore = applyMiddleware(thunk)(createStore);
@@ -25,7 +24,7 @@ class App extends React.Component {
       <div>
         <Provider store={store}>
           <Router history={browserHistory}>
-            <Route path="/" component={Navbar}>
+            <Route path="/" component={Layout}>
               <IndexRoute component={Home} />
               <Route path="/draw" component={Draw} />
               <Route path="/message" component={Message} />
