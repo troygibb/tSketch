@@ -9,10 +9,8 @@ class Navbar extends React.Component {
     return (
       <div id="navbar" >
         <div className="container">
-          <Link to="/">
-            <a className="logo">
+          <Link className="logo" to="/">
               DrawTrumpADoodle!
-            </a>
           </Link>
           <div className="checkoutProgress">
             <span className="checkoutProgress__label">Progress</span>
