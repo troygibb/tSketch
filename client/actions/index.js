@@ -36,18 +36,56 @@ export const changeAddress = (change, changeValue) => {
     type: 'CHANGE-ADDRESS',
     change,
     changeValue,
-  }
+  };
 };
-// TODO: Complete verifiy address server query
-// export const verifyAddress = (addressObject) => {
-//   return (dispatch) => {
-//     ajax({
 
-//     })
-//   }
-// }
+export const verifyAddress = (addressObject) => {
+  return (dispatch) => {
+    // Dispatch loading state
+    dispatch({
+      type: 'VERIFY-ADDRESS',
+      data: {
+        loading: true,
+      },
+    });
 
-export const completeOrder = ({ stripeToken, email, postcardImage, message, additionalAddress }) => {
+    ajax({
+      url: '/api/verify-address',
+      type: 'POST',
+      data: {
+        address: addressObject,
+      },
+    })
+    .then((response) => {
+      dispatch({
+        type: 'VERIFY-ADDRESS',
+        data: Object.assign({}, response.address, {
+          name: addressObject.name, // lob drops the name value on validation
+          warningMessage: response.message,
+          verified: true,
+        }),
+      });
+    })
+    .fail((err) => {
+      dispatch({
+        type: 'VERIFY-ADDRESS',
+        data: Object.assign({}, addressObject, {
+          loading: false,
+          verified: false,
+          error: true,
+        }),
+      });
+    });
+  };
+};
+
+export const completeOrder = ({
+  stripeToken,
+  email,
+  postcardImage,
+  message,
+  additionalAddress,
+}) => {
   return (dispatch) => {
     // Upload image to cloudinary
     ajax({
@@ -81,5 +119,12 @@ export const completeOrder = ({ stripeToken, email, postcardImage, message, addi
       console.log(err);
       console.log('ERRROR');
     });
+  };
+};
+
+export const toggleAdditionalAddress = (showAdditionalAddress) => {
+  return {
+    type: 'TOGGLE-ADDITIONAL-ADDRESS',
+    showAdditionalAddress,
   };
 };

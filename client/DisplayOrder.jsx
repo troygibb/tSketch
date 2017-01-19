@@ -7,7 +7,6 @@ class DisplayOrder extends React.Component {
 	}
 	render() {
 		const { message, postcardImage } = this.props;
-		console.log(postcardImage)
 		return (
 			<div>
 				<img width="500px" src={ postcardImage } />

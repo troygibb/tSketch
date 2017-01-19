@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeAtramentOption } from './actions';
-import InputRange from 'react-input-range';
 import { HuePicker } from 'react-color';
+import { changeAtramentOption } from './actions';
+
 // import reactInputRangeStyling from '../node_modules/react-input-range/scss/InputRange.scss'
 
 class AtramentOptions extends React.Component {
@@ -10,7 +10,7 @@ class AtramentOptions extends React.Component {
     super(props);
     this.state = {
       fullScreenMode: false,
-    }
+    };
     this.changeMode = this.changeMode.bind(this);
     this.changeSmooth = this.changeSmooth.bind(this);
     this.changeWidth = this.changeWidth.bind(this);
