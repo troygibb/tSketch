@@ -54,8 +54,12 @@ class Gallery extends React.Component {
   renderColumns(row) {
     return row.map((column) => {
       return (
-        <div key={column._id} className="col-md-4">
-          <img alt="presentation" width="250px" src={column.postcardImage.secure_url} />
+        <div key={column._id} className="col-md-4 gallery__item">
+          <img
+            alt="presentation"
+            className="doodle"
+            src={column.postcardImage.secure_url}
+          />
         </div>
       );
     });
@@ -74,11 +78,15 @@ class Gallery extends React.Component {
     const { galleryData } = this.props;
     if (galleryData.length) {
       return (
-        <div className="container">
+        <div className="container gallery">
           { this.renderRows() }
-          <button className="btn-default" onClick={this.loadMoreRows}>
-            Load More Images
-          </button>
+          <div className="row">
+            <div className="col-md-4 col-md-offset-4">
+              <button className="btn btn-primary btn-block" onClick={this.loadMoreRows}>
+                Load More Doodles
+              </button>
+            </div>
+          </div>
         </div>
       );
     }

@@ -22,7 +22,9 @@ class Message extends React.Component {
       <div className="bodyWrapper container" id="message">
         <div className="row">
           <div className="col-md-6 col-md-offset-3">
-            <h2>Write Your Message</h2>
+            <h3 className="sidelines text-center">
+              <span>Postcard Message</span>
+            </h3>
             <textarea
               className="message__field"
               id="message-input"
