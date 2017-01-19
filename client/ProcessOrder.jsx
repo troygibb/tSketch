@@ -18,12 +18,13 @@ class ProcessOrder extends React.Component {
     const postcardImage = this.props.postcardImage;
     const message = this.props.message;
     const additionalAddress = this.props.additionalAddress;
+    const showAdditionalAddress = this.props.showAdditionalAddress;
     this.props.completeOrder({
+      additionalAddress: showAdditionalAddress ? additionalAddress : {},
       email,
       stripeToken,
       postcardImage,
       message,
-      additionalAddress,
     });
   }
   verifyAddress() {

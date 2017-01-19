@@ -127,16 +127,6 @@ class AdditionalAddress extends React.Component {
   }
 }
 
-/*
-name: '',
-    address_line1: '',
-    address_line2: '',
-    address_city: '',
-    address_state: '',
-    address_zip: '',
-
-*/
-
 const mapStateToProps = (currentState) => {
   const {
     name,
@@ -147,6 +137,7 @@ const mapStateToProps = (currentState) => {
     loading,
   } = currentState.additionalAddress;
   return {
+
     name,
     address_line1,
     address_line2,

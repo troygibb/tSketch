@@ -11,6 +11,7 @@ const intitialState = {
   postcardImage: null,
   orderResponse: {},
   overCharacterLimit: false,
+  showAdditionalAddress: false,
   additionalAddress: {
     loading: false, // Not returned from lob
     verified: false, // Not returned from lob
@@ -45,6 +46,12 @@ const actionHandler = {
     return {
       ...previousState,
       orderResponse: action.orderResponse,
+    };
+  },
+  'TOGGLE-ADDITIONAL-ADDRESS': (previousState, action) => {
+    return {
+      ...previousState,
+      showAdditionalAddress: action.showAdditionalAddress,
     };
   },
   'CHANGE-ADDRESS': (previousState, action) => {

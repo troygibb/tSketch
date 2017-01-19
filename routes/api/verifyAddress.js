@@ -5,7 +5,7 @@ const utils = keystone.utils;
 
 function verifyAddress(req, res) {
   // Check data
-  const address = req.body.address || {};
+  const address = req.body.address;
   if (!utils.isObject(address)) {
     res.apiError('Invalid Input');
   }
