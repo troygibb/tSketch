@@ -15,17 +15,24 @@ class ConfirmPage extends React.Component {
       amount *= 2;
     }
     return (
-      <div>
+      <div className="container confirm">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 confirm___doodlePreviewWrapper">
             <img
               alt="Your Doodle"
               src={this.props.postcardImage}
+              className="confirm___doodlePreview"
             />
           </div>
           <div className="col-md-6">
             <div>
-              {this.props.message}
+              <h3 className="sidelines text-center">
+                <span>Postcard Message</span>
+              </h3>
+              <blockquote>
+                <p>{this.props.message}</p>
+              </blockquote>
+              <hr />
             </div>
             <AdditionalAddress />
           </div>
@@ -57,7 +64,7 @@ const mapStateToProps = (currentState) => {
   return {
     orderLoading: currentState.orderLoading,
     postcardImage: currentState.postcardImage,
-    message: currentState.message,
+    message: currentState.message || 'To Mr. Trump:',
     showAddress: currentState.showAddress,
   };
 };

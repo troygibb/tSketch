@@ -54,23 +54,25 @@ class AdditionalAddress extends React.Component {
               onClick={this.toggleAddress}
               type="checkbox"
               value={showAddress}
-            /> Send yourself a copy too?
+            /> Send me a copy! (+$2)
           </label>
         </div>
         {showAddress ?
           <div id="additional-address-field">
             <form>
               <div className="form-group">
+                <label>Name:</label>
                 <input
                   value={name}
                   onChange={this.changeAddressName}
                   name="name"
-                  placeholder="name"
+                  placeholder="Name"
                   type="text"
                   className="form-control"
                 />
               </div>
               <div className="form-group">
+                <label>Address Line 1:</label>
                 <input
                   value={address_line1}
                   onChange={this.changeAddress}
@@ -81,6 +83,7 @@ class AdditionalAddress extends React.Component {
                 />
               </div>
               <div className="form-group">
+                <label>Address Line 2:</label>
                 <input
                   value={address_line2}
                   onChange={this.changeAddress}
@@ -91,6 +94,7 @@ class AdditionalAddress extends React.Component {
                 />
               </div>
               <div className="form-group">
+                <label>City:</label>
                 <input
                   value={address_city}
                   onChange={this.changeAddress}
@@ -101,10 +105,11 @@ class AdditionalAddress extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <span>Select state:</span>
+                <label>State:</label>
                 <StateSelector />
               </div>
               <div className="form-group">
+                <label>Zipcode:</label>
                 <input
                   value={address_zip}
                   onChange={this.changeAddress}
@@ -114,7 +119,9 @@ class AdditionalAddress extends React.Component {
                   className="form-control"
                 />
               </div>
-              <span>*Currently only allowing addresses within the United States</span>
+              <p className="help-block">
+                We can only ship additional copies to addresses in the United States.
+              </p>
             </form>
           </div>
           : false

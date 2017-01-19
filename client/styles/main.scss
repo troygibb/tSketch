@@ -1,9 +1,22 @@
-@import "./main.css";
+@import "./spinkit.css";
+@import "./theme.css";
 @import "./blue.css";
 
 // globals
 .homeHero {
   background-image: url('http://a.abcnews.com/images/Politics/RT_DTrump_Pa_MEM_160628_12x5_1600.jpg');
+}
+.confirm {
+  padding-top: 15px;
+
+  &___doodlePreviewWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  &___doodlePreview {
+    width: 100%;
+    background-color: #FFF;
+  }
 }
 // html,body {
 //   font-family: 'Montserrat', sans-serif;
