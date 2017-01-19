@@ -40,7 +40,7 @@ class ProcessOrder extends React.Component {
     return (
       <div>
         <button
-          className="btn btn-block btn-default"
+          className="btn btn-block btn-gray"
           onClick={this.verifyAddress}
         >
           Verify Your Address
@@ -51,7 +51,7 @@ class ProcessOrder extends React.Component {
   renderLoadingButton() {
     return (
       <div>
-        <button className="btn btn-block btn-default" disabled>
+        <button className="btn btn-block btn-gray" disabled>
           Verifying Address...
         </button>
       </div>

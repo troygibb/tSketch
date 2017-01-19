@@ -13,7 +13,11 @@ class StateSelector extends React.Component {
   }
   render() {
     return (
-      <select onChange={this.changeAddressState} value={this.props.address_state}>
+      <select
+        className="form-control"
+        onChange={this.changeAddressState}
+        value={this.props.address_state}
+      >
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>

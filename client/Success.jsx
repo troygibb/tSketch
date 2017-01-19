@@ -5,40 +5,28 @@ import Loading from './Loading';
 class Success extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loadingThumbnails: true,
-    };
-  }
-  componentDidMount() {
-    // Delay showing thumbnails for 1 second so the can load on Lob.
-    setTimeout(() => {
-      this.setState({
-        loadingThumbnails: false,
-      });
-    }, 6000);
   }
   render() {
+    const { orderResponse } = this.props;
     return (
       <div className="container success">
         <h1>Success!</h1>
         <p>
-          Your Doodle should arrive on {this.props.expectedDeliveryDate}.
+          Your Doodle should arrive to The White House on {this.props.expectedDeliveryDate}.
+          {(orderResponse.additionalAddress) ? 'A copy will also be sent to you and should arrive shortly after.' : ''}
         </p>
         <div className="row">
           <div className="col-md-6">
-            <div className="success__thumbnail">
-              { this.state.loadingThumbnails ?
-                (<Loading text="Generating Postcard Thumbnail"/>) :
-                (<img alt="Front Thumbnail" src={this.props.frontThumbnail} />)
-              }
+            <div>
+              <img
+                alt="Your Postcard"
+                src={orderResponse.postcardImage.secure_url}
+              />
             </div>
           </div>
           <div className="col-md-6">
-            <div className="success__thumbnail">
-              { this.state.loadingThumbnails ?
-                (<Loading text="Generating Postcard Thumbnail"/>) :
-                (<img alt="Back Thumbnail" src={this.props.backThumbnail} />)
-              }
+            <div>
+              {orderResponse.message}
             </div>
           </div>
         </div>

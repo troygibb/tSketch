@@ -150,10 +150,10 @@ function orderAPI(req, res) {
     } else {
       const postcardData = result[1];
       res.apiResponse({
-        frontThumbnail: postcardData.thumbnails[0].medium,
-        backThumbnail: postcardData.thumbnails[1].medium,
+        postcardImage,
         expectedDeliveryDate: postcardData.expected_delivery_date,
         additionalAddress: twoPostcards,
+        message,
       });
     }
   });

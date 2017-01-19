@@ -1,13 +1,14 @@
 import React from 'react';
-import Spinner from 'react-spinkit';
+// import Spinner from 'react-spinkit';
 
 const Loading = ({ text }) => {
   return (
     <div className="loadingIndicator">
-      <Spinner
-        spinnerName="three-bounce"
-        noFadeIn
-      />
+      <div className="spinner">
+        <div className="bounce1" />
+        <div className="bounce2" />
+        <div className="bounce3" />
+      </div>
       <h4>{text}</h4>
     </div>
   );

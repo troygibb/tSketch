@@ -60,10 +60,6 @@ const common = {
         test: /\.png$/,
         loader: 'url-loader?limit=8192',
       },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-      },
     ],
   },
   resolve: {

@@ -5,7 +5,7 @@ import Footer from './Footer';
 class Layout extends React.Component {
   render() {
     return (
-      <div>
+      <div className="light-bg">
         <Navbar />
         { this.props.children }
         <Footer/>
