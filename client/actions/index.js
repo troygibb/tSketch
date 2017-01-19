@@ -96,6 +96,13 @@ export const verifyAddress = (addressObject) => {
   };
 };
 
+export const orderLoading = (loading) => {
+  return {
+    type: 'ORDER-LOADING',
+    loading,
+  };
+};
+
 export const completeOrder = ({
   stripeToken,
   email,
@@ -104,6 +111,7 @@ export const completeOrder = ({
   additionalAddress,
 }) => {
   return (dispatch) => {
+    dispatch(orderLoading(true));
     // Upload image to cloudinary
     ajax({
       url: `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
@@ -135,6 +143,9 @@ export const completeOrder = ({
     .fail((err) => {
       console.log(err);
       console.log('ERRROR');
+    })
+    .always(() => {
+      dispatch(orderLoading(false));
     });
   };
 };

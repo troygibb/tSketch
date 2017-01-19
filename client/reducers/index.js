@@ -10,6 +10,7 @@ const intitialState = {
   message: '',
   postcardImage: null,
   orderResponse: {},
+  orderLoading: false,
   overCharacterLimit: false,
   showAddress: false,
   address: {
@@ -88,6 +89,12 @@ const actionHandler = {
     return {
       ...previousState,
       addressError: action.error,
+    };
+  },
+  'ORDER-LOADING': (previousState, action) => {
+    return {
+      ...previousState,
+      orderLoading: action.loading,
     };
   },
 };
