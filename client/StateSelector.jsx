@@ -13,7 +13,7 @@ class StateSelector extends React.Component {
   }
   render() {
     return (
-      <select onChange={this.changeAddressState} value={this.props.addressState}>
+      <select onChange={this.changeAddressState} value={this.props.address_state}>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -72,7 +72,7 @@ class StateSelector extends React.Component {
 
 const mapStateToProps = (currentState) => {
   return {
-    addressState: currentState.additionalAddress.address_state,
+    address_state: currentState.address.address_state,
   };
 };
 

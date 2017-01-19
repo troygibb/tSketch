@@ -39,15 +39,43 @@ export const changeAddress = (change, changeValue) => {
   };
 };
 
+export const changeAddressName = (name) => {
+  return {
+    type: 'CHANGE-ADDRESS-NAME',
+    name,
+  };
+};
+
+export const addressVerified = ({ address, message }) => {
+  // Delete object property returned from lob. It will throw errors if sent back up
+  /* eslint no-param-reassign: 0 */
+  delete address.object;
+  return {
+    type: 'ADDRESS-VERIFIED',
+    address,
+    addressWarning: message,
+  };
+};
+
+export const addressLoading = (loading) => {
+  return {
+    type: 'ADDRESS-LOADING',
+    loading,
+  };
+};
+
+export const addressError = (error) => {
+  return {
+    type: 'ADDRESS-ERROR',
+    error,
+  };
+};
+
 export const verifyAddress = (addressObject) => {
   return (dispatch) => {
-    // Dispatch loading state
-    dispatch({
-      type: 'VERIFY-ADDRESS',
-      data: {
-        loading: true,
-      },
-    });
+    // Show loading indicator, remove error
+    dispatch(addressLoading(true));
+    dispatch(addressError(false));
 
     ajax({
       url: '/api/verify-address',
@@ -57,24 +85,13 @@ export const verifyAddress = (addressObject) => {
       },
     })
     .then((response) => {
-      dispatch({
-        type: 'VERIFY-ADDRESS',
-        data: Object.assign({}, response.address, {
-          name: addressObject.name, // lob drops the name value on validation
-          warningMessage: response.message,
-          verified: true,
-        }),
-      });
+      dispatch(addressVerified(response));
     })
-    .fail((err) => {
-      dispatch({
-        type: 'VERIFY-ADDRESS',
-        data: Object.assign({}, addressObject, {
-          loading: false,
-          verified: false,
-          error: true,
-        }),
-      });
+    .fail(() => {
+      dispatch(addressError(true));
+    })
+    .always(() => {
+      dispatch(addressLoading(false));
     });
   };
 };
@@ -122,9 +139,9 @@ export const completeOrder = ({
   };
 };
 
-export const toggleAdditionalAddress = (showAdditionalAddress) => {
+export const toggleAddress = (showAddress) => {
   return {
-    type: 'TOGGLE-ADDITIONAL-ADDRESS',
-    showAdditionalAddress,
+    type: 'TOGGLE-ADDRESS',
+    showAddress,
   };
 };
