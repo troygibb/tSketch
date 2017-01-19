@@ -7,26 +7,41 @@ class Navbar extends React.Component {
   }
   render() {
     return (
-      <div id="navbar" >
-        <div className="container">
-          <Link className="logo" to="/">
-              DrawTrumpADoodle!
-          </Link>
-          <div className="checkoutProgress">
-            <span className="checkoutProgress__label">Progress</span>
-            <div className="progress">
-              <div className="progress-bar">
-                <span>20%</span>
+      <header>
+        <div className="navbar">
+          <div className="navbar-header">
+            <div className="container">
+              <Link className="navbar-brand" to="/">
+                <img src="/images/logo.png" className="logo" alt="" />
+              </Link>
+              <a className="navbar-toggle btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse">
+                <i className='icon-menu-1'></i>
+              </a>
+            </div>
+          </div>
+          <div className="yamm">
+            <div className="navbar-collapse collapse">
+              <div className="container">
+                <Link className="navbar-brand" to="/">
+                  <img src="/images/logo.png" className="logo" alt="" />
+                </Link>
+                <ul className="nav navbar-nav">
+                  <li>
+                    <Link to="/">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/gallery">
+                      Gallery
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-          <div className="pull-right">
-            <Link to="/gallery">
-              <span>Gallery</span>
-            </Link>
-          </div>
         </div>
-      </div>
+      </header>
     );
   }
 }

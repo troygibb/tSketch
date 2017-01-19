@@ -1,104 +1,109 @@
+@import "./main.css";
+@import "./blue.css";
+
 // globals
-
-html,body {
-  font-family: 'Montserrat', sans-serif;
-	height:100%;
+.homeHero {
+  background-image: url('http://a.abcnews.com/images/Politics/RT_DTrump_Pa_MEM_160628_12x5_1600.jpg');
 }
-
-// Home
-.heroSection{
-	&__wrapper{
-		background-image: url('http://a.abcnews.com/images/Politics/RT_DTrump_Pa_MEM_160628_12x5_1600.jpg');
-		background-size: cover;
-		background-position: top left;
-		color: white;
-		padding: 15px;
-	}
-	&__heading{
-		font-size: 36px;
-		text-shadow: 1px 1px 2px black;
-		margin-top: 30px;
-	}
-	&__text{
-		font-size: 18px;
-		text-shadow: 1px 1px 2px black;
-		margin-bottom: 30px;
-	}
-	&__CTAWrapper{
-		background-color: rgba(46,52,95, 0.8);
-		padding: 15px 15px 20px 15px;
-		margin: 20px 0px;
-	}
-	&__CTAButton{
-		background: #00bf00;
-		color: white;
-		vertical-align: bottom;
-	}
-	&__CTAHeading{
-		font-size: 28px;
-		display: inline-block;
-		margin-right: 15px;
-	}
-}
-.aboutSection{
-	&__heading{
-		margin: 30px 0px;
-	}
-	&__image{
-		max-width: 100%;
-	}
-}
-
-
-// nav
-#navbar {
-	width: 100%;
-	background-color: white;
-	border-bottom: 3px solid rgb(46, 52, 95);
-	color: rgb(46, 52, 95);
-	padding: 10px 0px;
-}
-.logo{
-	font-family: Comic Sans MS;
-	font-size: 30px;
-}
-.checkoutProgress{
-	width: 300px;
-	max-width: calc(100% - 300px);
-	margin-top: 10px;
-	margin-bottom: 0px;
-	float: right;
-	height: 20px;
-	text-align: right;
-	&__label{
-		display: inline-block;
-		margin-right: 5px;
-	}
-	.progress{
-		display: inline-block;
-		max-width: calc(100% - 100px);
-		margin-bottom: 0px;
-		width: 100%;
-		vertical-align: top;
-	}
-}
-
-// Footer
-.footer{
-	&__wrapper{
-		background: #820408;
-		padding: 30px;
-		width: 100%;
-		color: white !important;
-		text-align: center;
-	}
-	&__github{
-		height: 40px;
-		margin-right: 5px;
-		color: white !important;
-	}
-
-}
+// html,body {
+//   font-family: 'Montserrat', sans-serif;
+// 	height:100%;
+// }
+//
+// // Home
+// .heroSection{
+// 	&__wrapper{
+// 		background-image: url('http://a.abcnews.com/images/Politics/RT_DTrump_Pa_MEM_160628_12x5_1600.jpg');
+// 		background-size: cover;
+// 		background-position: top left;
+// 		color: white;
+// 		padding: 15px;
+// 	}
+// 	&__heading{
+// 		font-size: 36px;
+// 		text-shadow: 1px 1px 2px black;
+// 		margin-top: 30px;
+// 	}
+// 	&__text{
+// 		font-size: 18px;
+// 		text-shadow: 1px 1px 2px black;
+// 		margin-bottom: 30px;
+// 	}
+// 	&__CTAWrapper{
+// 		background-color: rgba(46,52,95, 0.8);
+// 		padding: 15px 15px 20px 15px;
+// 		margin: 20px 0px;
+// 	}
+// 	&__CTAButton{
+// 		background: #00bf00;
+// 		color: white;
+// 		vertical-align: bottom;
+// 	}
+// 	&__CTAHeading{
+// 		font-size: 28px;
+// 		display: inline-block;
+// 		margin-right: 15px;
+// 	}
+// }
+// .aboutSection{
+// 	&__heading{
+// 		margin: 30px 0px;
+// 	}
+// 	&__image{
+// 		max-width: 100%;
+// 	}
+// }
+//
+//
+// // nav
+// #navbar {
+// 	width: 100%;
+// 	background-color: white;
+// 	border-bottom: 3px solid rgb(46, 52, 95);
+// 	color: rgb(46, 52, 95);
+// 	padding: 10px 0px;
+// }
+// .logo{
+// 	font-family: Comic Sans MS;
+// 	font-size: 30px;
+// }
+// .checkoutProgress{
+// 	width: 300px;
+// 	max-width: calc(100% - 300px);
+// 	margin-top: 10px;
+// 	margin-bottom: 0px;
+// 	float: right;
+// 	height: 20px;
+// 	text-align: right;
+// 	&__label{
+// 		display: inline-block;
+// 		margin-right: 5px;
+// 	}
+// 	.progress{
+// 		display: inline-block;
+// 		max-width: calc(100% - 100px);
+// 		margin-bottom: 0px;
+// 		width: 100%;
+// 		vertical-align: top;
+// 	}
+// }
+//
+// // Footer
+// .footer{
+// 	&__wrapper{
+// 		background: #820408;
+// 		padding: 30px;
+// 		width: 100%;
+// 		color: white !important;
+// 		text-align: center;
+// 	}
+// 	&__github{
+// 		height: 40px;
+// 		margin-right: 5px;
+// 		color: white !important;
+// 	}
+//
+// }
 
 // drawing
 .atrament{
@@ -131,97 +136,97 @@ html,body {
 		margin-bottom: 10px;
 	}
 }
-.message{
-	&__field{
-		width: 100%;
-		height: 150px;
-	}
-}
-.bodyWrapper{
-	margin: 15px auto !important;
-}
-
-.success {
-  margin-bottom: 15px;
-
-  &__thumbnail {
-    width: 100%;
-    min-height: 200px;
-    background-color: #FFF;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #eee;
-    padding: 10px;
-    text-align: center;
-
-    img {
-      width: 100%;
-    }
-  }
-}
-
-#draw {
-	text-align: center;
-	#mySketcher {
-		max-width: 100%;
-		max-height: calc(100vh - 60px);
-	}
-}
-
-#collapseToggle {
-	margin: 0;
-	font-size: 10px;
-	color: #333;
-	text-decoration: none;
-}
+// .message{
+// 	&__field{
+// 		width: 100%;
+// 		height: 150px;
+// 	}
+// }
+// .bodyWrapper{
+// 	margin: 15px auto !important;
+// }
+//
+// .success {
+//   margin-bottom: 15px;
+//
+//   &__thumbnail {
+//     width: 100%;
+//     min-height: 200px;
+//     background-color: #FFF;
+//     border-style: solid;
+//     border-width: 2px;
+//     border-color: #eee;
+//     padding: 10px;
+//     text-align: center;
+//
+//     img {
+//       width: 100%;
+//     }
+//   }
+// }
+//
+// #draw {
+// 	text-align: center;
+// 	#mySketcher {
+// 		max-width: 100%;
+// 		max-height: calc(100vh - 60px);
+// 	}
+// }
+//
+// #collapseToggle {
+// 	margin: 0;
+// 	font-size: 10px;
+// 	color: #333;
+// 	text-decoration: none;
+// }
 #atramentOptions {
 	position: relative;
 	height: 100%;
 }
-#main {
-	width: 100%;
-	height: 100%;
-	.navbar-brand {
-		font-family: Comic Sans MS;
-		font-size: 2em;
-	}
-}
-
-#message {
-	height: 100%;
-	margin: auto;
-	text-align: center;
-	h1 {
-		padding-top: 2em;
-	}
-	input[type=text] {
-		font-size: 3em;
-		margin-top: 1.5em;
-		margin-bottom: 1.5em;
-		width: 50%;
-		height: 50%;
-		border: 1px solid black;
-	}
-	input[type=text]:focus {
-		outline: none;
-	}
-	p {
-		padding-top: 1em;
-		padding-bottom: 1em;
-		font-size: 2em;
-	}
-}
-.nextButton {
-	width: 25%;
-	margin: auto;
-	height: 2em;
-	font-size: 1.5em;
-}
-canvas {
-	background-color: white;
-	border: 1px solid black;
-}
-.loadingIndicator {
-  text-align: center;
-  padding: 15px;
-}
+// #main {
+// 	width: 100%;
+// 	height: 100%;
+// 	.navbar-brand {
+// 		font-family: Comic Sans MS;
+// 		font-size: 2em;
+// 	}
+// }
+//
+// #message {
+// 	height: 100%;
+// 	margin: auto;
+// 	text-align: center;
+// 	h1 {
+// 		padding-top: 2em;
+// 	}
+// 	input[type=text] {
+// 		font-size: 3em;
+// 		margin-top: 1.5em;
+// 		margin-bottom: 1.5em;
+// 		width: 50%;
+// 		height: 50%;
+// 		border: 1px solid black;
+// 	}
+// 	input[type=text]:focus {
+// 		outline: none;
+// 	}
+// 	p {
+// 		padding-top: 1em;
+// 		padding-bottom: 1em;
+// 		font-size: 2em;
+// 	}
+// }
+// .nextButton {
+// 	width: 25%;
+// 	margin: auto;
+// 	height: 2em;
+// 	font-size: 1.5em;
+// }
+// canvas {
+// 	background-color: white;
+// 	border: 1px solid black;
+// }
+// .loadingIndicator {
+//   text-align: center;
+//   padding: 15px;
+// }
