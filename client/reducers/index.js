@@ -101,7 +101,7 @@ const actionHandler = {
   'STORE-ORDERS': (previousState, action) => {
     return {
       ...previousState,
-      galleryData: action.data,
+      galleryData: action.results,
     };
   },
 };
