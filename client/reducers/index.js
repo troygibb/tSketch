@@ -11,19 +11,20 @@ const intitialState = {
   postcardImage: null,
   orderResponse: {},
   overCharacterLimit: false,
-  showAdditionalAddress: false,
-  additionalAddress: {
-    loading: false, // Not returned from lob
-    verified: false, // Not returned from lob
-    error: false, // Not returned from lob
-    warningMessage: undefined, // Return from lob when address needs apt number
-    name: '',
+  showAddress: false,
+  address: {
     address_line1: '', // Verify with lob
     address_line2: '', // Verify with lob
     address_city: '', // Verify with lob
     address_state: '', // Verify with lob
     address_zip: '', // Verify with lob
+    address_country: 'US',
   },
+  addressName: '',
+  addressLoading: false,
+  addressVerified: false,
+  addressError: false,
+  addressWarning: undefined, // Return from lob when address needs apt number
 };
 
 const actionHandler = {
@@ -48,35 +49,46 @@ const actionHandler = {
       orderResponse: action.orderResponse,
     };
   },
-  'TOGGLE-ADDITIONAL-ADDRESS': (previousState, action) => {
+  'TOGGLE-ADDRESS': (previousState, action) => {
     return {
       ...previousState,
-      showAdditionalAddress: action.showAdditionalAddress,
+      showAddress: action.showAddress,
     };
   },
   'CHANGE-ADDRESS': (previousState, action) => {
-    // Invalidate any address verification if anything besides name is changed
-    let verified = previousState.additionalAddress.verified;
-    if (action.change !== 'name') {
-      verified = false;
-    }
     return Object.assign({}, previousState, {
-      additionalAddress: {
-        ...previousState.additionalAddress,
+      address: {
+        ...previousState.address,
         [action.change]: action.changeValue,
-        verified,
       },
+      addressVerified: false, // Invalidate address verification
     });
   },
-  'VERIFY-ADDRESS': (previousState, action) => {
-    return Object.assign({}, previousState, {
-      additionalAddress: action.data,
-    });
+  'CHANGE-ADDRESS-NAME': (previousState, action) => {
+    return {
+      ...previousState,
+      addressName: action.name,
+    };
   },
-  'TOGGLE-ADDITIONAL-ADDRESS': (previousState, action) => {
-    return Object.assign({}, previousState, {
-      showAdditionalAddress: action.showAdditionalAddress,
-    });
+  'ADDRESS-VERIFIED': (previousState, action) => {
+    return {
+      ...previousState,
+      address: action.address,
+      addressWarning: action.addressWarning,
+      addressVerified: true,
+    };
+  },
+  'ADDRESS-LOADING': (previousState, action) => {
+    return {
+      ...previousState,
+      addressLoading: action.loading,
+    };
+  },
+  'ADDRESS-ERROR': (previousState, action) => {
+    return {
+      ...previousState,
+      addressError: action.error,
+    };
   },
 };
 

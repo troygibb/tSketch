@@ -17,21 +17,15 @@ class ProcessOrder extends React.Component {
     const stripeToken = response.id;
     const postcardImage = this.props.postcardImage;
     const message = this.props.message;
-    const additionalAddress = this.props.additionalAddress;
-    const showAdditionalAddress = this.props.showAdditionalAddress;
-    let addressData = {};
-    if (showAdditionalAddress) {
-      addressData = {
-        name: additionalAddress.name,
-        address_line1: additionalAddress.address_line1,
-        address_line2: additionalAddress.address_line2,
-        address_city: additionalAddress.address_city,
-        address_state: additionalAddress.address_state,
-        address_zip: additionalAddress.address_zip,
-      };
-    }
+    const address = this.props.address;
+    const showAddress = this.props.showAddress;
+    const addressName = this.props.addressName;
+    const addressData = {
+      ...address,
+      name: addressName || 'Doodler', // Add default name because Lob will throw an error on send but not on address validation if a name isn't provided
+    };
     this.props.completeOrder({
-      additionalAddress: addressData,
+      additionalAddress: (showAddress) ? addressData : {},
       email,
       stripeToken,
       postcardImage,
@@ -39,16 +33,8 @@ class ProcessOrder extends React.Component {
     });
   }
   verifyAddress() {
-    const { additionalAddress } = this.props;
-    const addressData = {
-      name: additionalAddress.name,
-      address_line1: additionalAddress.address_line1,
-      address_line2: additionalAddress.address_line2,
-      address_city: additionalAddress.address_city,
-      address_state: additionalAddress.address_state,
-      address_zip: additionalAddress.address_zip,
-    };
-    this.props.verifyAddress(addressData);
+    const { address } = this.props;
+    this.props.verifyAddress(address);
   }
   renderVerifyAddressButton() {
     return (
@@ -80,18 +66,18 @@ class ProcessOrder extends React.Component {
         >
           <button className="nextButton">Place your order!</button>
         </StripeCheckout>
-        {(this.props.additionalAddress.warningMessage) ?
-          (<p>{this.props.additionalAddress.warningMessage}</p>) : null
+        {(this.props.addressWarning) ?
+          (<p>{this.props.addressWarning}</p>) : null
         }
       </div>
     );
   }
   render() {
-    const { showAdditionalAddress, additionalAddress } = this.props;
-    if (showAdditionalAddress && !additionalAddress.verified) {
+    const { showAddress, addressVerified, addressLoading } = this.props;
+    if (showAddress && !addressVerified) {
       // Requesting a second postcard but the user hasn't verified their address yet
       return this.renderVerifyAddressButton();
-    } else if (showAdditionalAddress && additionalAddress.loading) {
+    } else if (showAddress && addressLoading) {
       // Currently verifying address
       return this.renderLoadingButton();
     }
@@ -102,8 +88,12 @@ const mapStateToProps = (currentState) => {
   return {
     message: currentState.message,
     postcardImage: currentState.postcardImage,
-    additionalAddress: currentState.additionalAddress,
-    showAdditionalAddress: currentState.showAdditionalAddress,
+    address: currentState.address,
+    addressName: currentState.addressName,
+    showAddress: currentState.showAddress,
+    addressVerified: currentState.addressVerified,
+    addressLoading: currentState.addressLoading,
+    addressWarning: currentState.addressWarning,
   };
 };
 export default connect(mapStateToProps, { completeOrder, verifyAddress })(ProcessOrder);

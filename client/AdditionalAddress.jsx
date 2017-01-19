@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import Spinner from 'react-spinkit';
 import StateSelector from './StateSelector';
-import { changeAddress, toggleAdditionalAddress } from './actions';
+import { changeAddress, changeAddressName, toggleAddress } from './actions';
 
 class AdditionalAddress extends React.Component {
   constructor(props) {
     super(props);
     this.changeAddress = this.changeAddress.bind(this);
-    this.toggleAdditionalAddress = this.toggleAdditionalAddress.bind(this);
+    this.changeAddressName = this.changeAddressName.bind(this);
+    this.toggleAddress = this.toggleAddress.bind(this);
     this.renderLoading = this.renderLoading.bind(this);
     this.renderForm = this.renderForm.bind(this);
   }
@@ -22,8 +23,12 @@ class AdditionalAddress extends React.Component {
       this.props.changeAddress(event.target.name, event.target.value);
     }
   }
-  toggleAdditionalAddress() {
-    this.props.toggleAdditionalAddress(!this.props.showAdditionalAddress);
+  toggleAddress() {
+    this.props.toggleAddress(!this.props.showAddress);
+  }
+  changeAddressName(event) {
+    const name = event.target.value;
+    this.props.changeAddressName(name);
   }
   renderLoading() {
     return (
@@ -40,7 +45,7 @@ class AdditionalAddress extends React.Component {
       address_line2,
       address_city,
       address_zip,
-      showAdditionalAddress,
+      showAddress,
     } = this.props;
     return (
       <div>
@@ -48,18 +53,18 @@ class AdditionalAddress extends React.Component {
           <label htmlFor="additionalAddressCheckbox">
             <input
               id="additionalAddressCheckbox"
-              onClick={this.toggleAdditionalAddress}
+              onClick={this.toggleAddress}
               type="checkbox"
             /> Send yourself a copy too?
           </label>
         </div>
-        {showAdditionalAddress ?
+        {showAddress ?
           <div id="additional-address-field">
             <form>
               <div className="form-group">
                 <input
                   value={name}
-                  onChange={this.changeAddress}
+                  onChange={this.changeAddressName}
                   name="name"
                   placeholder="name"
                   type="text"
@@ -129,25 +134,22 @@ class AdditionalAddress extends React.Component {
 
 const mapStateToProps = (currentState) => {
   const {
-    name,
     address_line1,
     address_line2,
     address_city,
     address_zip,
-    loading,
-  } = currentState.additionalAddress;
+  } = currentState.address;
   return {
-
-    name,
+    name: currentState.addressName,
     address_line1,
     address_line2,
     address_city,
     address_zip,
-    loading,
-    showAdditionalAddress: currentState.showAdditionalAddress,
+    loading: currentState.addressLoading,
+    showAddress: currentState.showAddress,
   };
 };
 
 export default connect(mapStateToProps, {
-  changeAddress, toggleAdditionalAddress,
+  changeAddress, changeAddressName, toggleAddress,
 })(AdditionalAddress);
