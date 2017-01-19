@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import Spinner from 'react-spinkit';
 import StateSelector from './StateSelector';
 import { changeAddress, changeAddressName, toggleAddress } from './actions';
+import Loading from './Loading';
 
 class AdditionalAddress extends React.Component {
   constructor(props) {
@@ -32,11 +32,9 @@ class AdditionalAddress extends React.Component {
   }
   renderLoading() {
     return (
-      <div>
-        {/* <Spinner spinnerName="double-bounce"/> */}
-        Loading Indicator Here
-        Verifying Address
-      </div>
+      <Loading
+        text="Verifying Your Address"
+      />
     );
   }
   renderForm() {
