@@ -17,11 +17,11 @@ class ConfirmPage extends React.Component {
     return (
       <div className="container confirm">
         <div className="row">
-          <div className="col-md-6 confirm___doodlePreviewWrapper">
+          <div className="col-md-6 confirm__doodlePreviewWrapper">
             <img
               alt="Your Doodle"
               src={this.props.postcardImage}
-              className="confirm___doodlePreview"
+              className="confirm__doodlePreview"
             />
           </div>
           <div className="col-md-6">
