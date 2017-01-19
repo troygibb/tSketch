@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import Loading from './Loading';
 
 class Success extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Success extends React.Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container success">
         <h1>Success!</h1>
         <p>
           Your Doodle should arrive on {this.props.expectedDeliveryDate}.
@@ -28,7 +28,7 @@ class Success extends React.Component {
           <div className="col-md-6">
             <div className="success__thumbnail">
               { this.state.loadingThumbnails ?
-                (<div>Loading Indicator Here</div>) :
+                (<Loading text="Generating Postcard Thumbnail"/>) :
                 (<img alt="Front Thumbnail" src={this.props.frontThumbnail} />)
               }
             </div>
@@ -36,7 +36,7 @@ class Success extends React.Component {
           <div className="col-md-6">
             <div className="success__thumbnail">
               { this.state.loadingThumbnails ?
-                (<div>Loading Indicator Here</div>) :
+                (<Loading text="Generating Postcard Thumbnail"/>) :
                 (<img alt="Back Thumbnail" src={this.props.backThumbnail} />)
               }
             </div>
