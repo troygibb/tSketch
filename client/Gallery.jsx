@@ -76,7 +76,7 @@ class Gallery extends React.Component {
       return (
         <div className="container">
           { this.renderRows() }
-          <button onClick={this.loadMoreRows}>
+          <button className="btn-default" onClick={this.loadMoreRows}>
             Load More Images
           </button>
         </div>
