@@ -71,20 +71,23 @@ export const addressError = (error) => {
   };
 };
 
-// query paramter for what page you want by page number
-  // 0 based
 export const getGallery = (page) => {
   return (dispatch) => {
     ajax({
       url: `/api/gallery?page=${page}`,
       type: 'GET',
     }).done(({ results }) => {
-      console.log('Image results', results);
       dispatch({
         type: 'STORE-ORDERS',
         results,
       });
     });
+  };
+};
+
+export const clearOrders = () => {
+  return {
+    type: 'CLEAR-ORDERS',
   };
 };
 

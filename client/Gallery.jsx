@@ -2,17 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import { getGallery } from './actions';
+import { getGallery, clearOrders } from './actions';
 import Loading from './Loading';
 
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pageNumber: 1,
+    };
     this.renderRows = this.renderRows.bind(this);
     this.organizeRows = this.organizeRows.bind(this);
+    this.loadMoreRows = this.loadMoreRows.bind(this);
   }
   componentWillMount() {
-    this.props.getGallery();
+    this.props.getGallery(this.state.pageNumber);
+    this.setState({
+      pageNumber: this.state.pageNumber + 1,
+    });
+  }
+  componentWillUnmount() {
+    // For reseting state to avoid duplicates.
+    this.props.clearOrders();
+  }
+  loadMoreRows() {
+    this.props.getGallery(this.state.pageNumber);
+    this.setState({
+      pageNumber: this.state.pageNumber + 1,
+    });
   }
   organizeRows() {
     const { galleryData } = this.props;
@@ -21,7 +38,6 @@ class Gallery extends React.Component {
     let build = [];
     let iterator = 0;
     while (flatData.length) {
-      console.log(flatData)
       if (iterator === 3) {
         rows.push(build);
         build = [];
@@ -60,6 +76,9 @@ class Gallery extends React.Component {
       return (
         <div className="container">
           { this.renderRows() }
+          <button className="btn-default" onClick={this.loadMoreRows}>
+            Load More Images
+          </button>
         </div>
       );
     }
@@ -69,11 +88,10 @@ class Gallery extends React.Component {
   }
 }
 
-// TODO: deconstruct current state for cleaner code
 const mapStateToProps = ({ galleryData }) => {
   return {
     galleryData,
   };
 };
 
-export default connect(mapStateToProps, { getGallery })(Gallery);
+export default connect(mapStateToProps, { getGallery, clearOrders })(Gallery);
