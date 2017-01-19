@@ -71,6 +71,20 @@ export const addressError = (error) => {
   };
 };
 
+export const getOrders = () => {
+  return (dispatch) => {
+    ajax({
+      url: '/api/order',
+      type: 'GET',
+    }).done((data) => {
+      dispatch({
+        type: 'STORE-ORDERS',
+        data,
+      });
+    });
+  };
+};
+
 export const verifyAddress = (addressObject) => {
   return (dispatch) => {
     // Show loading indicator, remove error

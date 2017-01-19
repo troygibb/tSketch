@@ -26,6 +26,7 @@ const intitialState = {
   addressVerified: false,
   addressError: false,
   addressWarning: undefined, // Return from lob when address needs apt number
+  galleryData: [], // For displaying in gallery
 };
 
 const actionHandler = {
@@ -95,6 +96,12 @@ const actionHandler = {
     return {
       ...previousState,
       orderLoading: action.loading,
+    };
+  },
+  'STORE-ORDERS': (previousState, action) => {
+    return {
+      ...previousState,
+      galleryData: action.data,
     };
   },
 };
