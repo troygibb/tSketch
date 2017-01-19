@@ -1,5 +1,5 @@
 {
-	"extends": "airbnb",
+  "extends": "airbnb",
   "plugins": [
       "react",
   ],
@@ -15,5 +15,10 @@
     "react/jsx-space-before-closing": 0,
     "new-cap": 0,
     "react/prop-types": 0
-  }
+  },
+  "globals": {
+      STRIPE_PUBLIC_KEY: false,
+      CLOUDINARY_CLOUD_NAME: false,
+      CLOUDINARY_UPLOAD_PRESET: false,
+  },
 }
