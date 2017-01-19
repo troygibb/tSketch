@@ -3,11 +3,11 @@ const Order = keystone.list('Order');
 
 function gallery(req, res) {
   const page = req.query.page || 0;
-  const resultsPerPage = 12;
+  const perPage = req.query.perPage || 12;
 
   Order.paginate({
     page,
-    perPage: resultsPerPage,
+    perPage,
     maxPages: 1,
   })
     .sort('-createdAt')

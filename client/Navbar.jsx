@@ -20,6 +20,11 @@ class Navbar extends React.Component {
               </div>
             </div>
           </div>
+          <div className="pull-right">
+            <Link to="/gallery">
+              <span>Gallery</span>
+            </Link>
+          </div>
         </div>
       </div>
     );

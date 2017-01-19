@@ -13,6 +13,7 @@ import Draw from './Draw';
 import Message from './Message';
 import ConfirmPage from './ConfirmPage';
 import Success from './Success';
+import Gallery from './Gallery';
 
 
 const finalStore = applyMiddleware(thunk)(createStore);
@@ -30,6 +31,7 @@ class App extends React.Component {
               <Route path="/message" component={Message} />
               <Route path="/confirm" component={ConfirmPage} />
               <Route path="/doodle-success" component={Success} />
+              <Route path="/gallery" component={Gallery} />
             </Route>
           </Router>
         </Provider>
