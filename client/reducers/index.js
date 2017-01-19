@@ -9,7 +9,12 @@ const intitialState = {
   },
   message: '',
   postcardImage: null,
-  orderResponse: {},
+  orderResponse: {
+    postcardImage: {}, // Cloudinary image object
+    additionalAddress: '', // true or false
+    expectedDeliveryDate: '', // returned from lob
+    message: '', // String
+  },
   orderLoading: false,
   overCharacterLimit: false,
   showAddress: false,
