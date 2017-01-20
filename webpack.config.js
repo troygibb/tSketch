@@ -67,6 +67,12 @@ const common = {
     // Empty string needed.
     extensions: ['', '.js', '.jsx', '.node'],
   },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty',
+  },
 };
 
 const buildConfig = (previousConfig) => {

@@ -112,7 +112,9 @@
 	position: relative;
 	height: 100%;
 }
-
+#undo-button {
+  margin-left: 1em;
+}
 canvas {
 	background-color: white;
 	border: 1px solid black;
