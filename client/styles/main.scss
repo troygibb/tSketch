@@ -4,7 +4,10 @@
 
 // globals
 .homeHero {
-  background-image: url('http://a.abcnews.com/images/Politics/RT_DTrump_Pa_MEM_160628_12x5_1600.jpg');
+  background-image: url('/images/home-header.jpg');
+  h1 {
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  }
 }
 .doodle {
   width: 100%;

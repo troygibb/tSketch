@@ -13,9 +13,11 @@ class Home extends React.Component {
             <div className="item img-bg-center homeHero">
               <div className="container">
                 <div className="caption vertical-center text-center">
-                  <h2 className="fadeInDown-1 light-color">Make America Draw Again!</h2>
+                  <h1 className="fadeInDown-1 light-color">Make America Draw Again!</h1>
                   <div className="fadeInDown-3">
-                    <Link className="btn btn-large" to="/pickBackgroundImage">Draw Trump A Doodle Now!</Link>
+                    <Link className="btn btn-large btn-red" to="/pickBackgroundImage">
+                      Draw Trump A Doodle Now!
+                    </Link>
                   </div>
                 </div>
               </div>
