@@ -17,6 +17,7 @@ class AtramentOptions extends React.Component {
     this.clearCanvas = this.clearCanvas.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.toggleFullScreen = this.toggleFullScreen.bind(this);
+    this.undoEvent = this.undoEvent.bind(this);
   }
   changeMode(event) {
     this.props.changeAtramentOption('mode', event.target.value);
@@ -34,12 +35,16 @@ class AtramentOptions extends React.Component {
     event.preventDefault();
     this.props.changeAtramentOption('clearing', true);
   }
+  undoEvent(event) {
+    event.preventDefault();
+    this.props.changeAtramentOption('undoing', true);
+  }
   changeColor(color) {
     this.props.changeAtramentOption('color', color.hex);
   }
   toggleFullScreen(event) {
     event.preventDefault();
-    var canvas = document.getElementById("draw");
+    const canvas = document.getElementById("draw");
     if (!this.state.fullScreenMode) {
       if (canvas.requestFullScreen) {
         canvas.requestFullScreen();
@@ -90,13 +95,14 @@ class AtramentOptions extends React.Component {
             type="range"
             min="1"
             max="80"
-            value= {this.props.atramentOptions.weight}
+            value = {this.props.atramentOptions.weight}
             onChange={this.changeWidth}
             className="atrament__widthControl"
           />
 
           </div>
           <button className="btn btn-sm btn-danger" onClick={this.clearCanvas}>Clear</button>
+          <button id="undo-button" className="btn btn-sm btn-danger" onClick={this.undoEvent}>Undo</button>
           {/* <a href="#" className="pull-right" onClick={this.toggleFullScreen}>
             { this.state.fullScreenMode ? 'Exit FullScreen' : 'Go FullScreen'}
           </a> */}

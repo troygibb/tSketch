@@ -22,6 +22,11 @@ class Draw extends React.Component {
       this.props.changeAtramentOption('clearing', false);
       return;
     }
+    if (nextProps.atramentOptions.undoing) {
+      this.atrament.undo();
+      this.props.changeAtramentOption('undoing', false);
+      return;
+    }
     _.extend(this.atrament, nextProps.atramentOptions);
   }
   saveImage() {

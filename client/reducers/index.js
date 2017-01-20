@@ -5,6 +5,7 @@ const intitialState = {
     weight: 10,
     opacity: 1,
     clearing: false,
+    undoing: false,
     color: '#ff0068',
   },
   backgroundImage: null,

@@ -102,6 +102,9 @@ class Atrament {
     this.canvas.height = height || 500;
     this.canvas.style.cursor = 'crosshair';
 
+    // For setting a stack of drawn canvases.
+    this.stack = [];
+
     // create a mouse object
     this.mouse = new Mouse();
 
@@ -169,10 +172,15 @@ class Atrament {
       this.context.moveTo(this.mouse.px, this.mouse.py);
     };
 
-    const mouseUp = () => {
+    const mouseUp = (e) => {
       this.mouse.down = false;
-      // stop drawing
       this.context.closePath();
+      // stop drawing
+
+      // Event listener fires on all parts of page. TODO: Buggy when mouse draws off the screen. Definitely needs tweaking.
+      if (e.target.localName === 'canvas') {
+        this.stack.push(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height));
+      }
     };
 
     // attach listeners
@@ -206,12 +214,16 @@ class Atrament {
     this._filling = false;
     this._fillStack = [];
 
+    // Null checking for imgSrc for drawing background to canvas.
     if (imgSrc) {
       this.img = new Image();
       this.img.src = imgSrc;
       this.img.onload = () => {
-        this.context.drawImage(this.img, 0, 0, this.canvas.width, this.canvas.height)
+        this.context.drawImage(this.img, 0, 0, this.canvas.width, this.canvas.height);
+        this.stack.push(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height));
       }
+    } else {
+      this.stack.push(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height));
     }
 
     // set drawing params
@@ -280,6 +292,13 @@ class Atrament {
         data[pixelPos - 4 + 3] = data[pixelPos - 4 + 3] * 0.01 + alpha * 0.99;
       }
     };
+  }
+
+  undo() {
+    if (this.stack.length > 1) {
+      this.stack.pop();
+      this.context.putImageData(this.stack[this.stack.length - 1], 0 , 0);
+    }
   }
 
   draw(mX, mY) {
