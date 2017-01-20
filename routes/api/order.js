@@ -150,10 +150,9 @@ function orderAPI(req, res) {
     } else {
       const postcardData = result[1];
       res.apiResponse({
-        postcardImage,
         expectedDeliveryDate: postcardData.expected_delivery_date,
         additionalAddress: twoPostcards,
-        message,
+        id: order.id,
       });
     }
   });

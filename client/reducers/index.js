@@ -11,10 +11,9 @@ const intitialState = {
   message: 'Dear Mr. Trump,',
   postcardImage: null,
   orderResponse: {
-    postcardImage: {}, // Cloudinary image object
-    additionalAddress: '', // true or false
-    expectedDeliveryDate: '', // returned from lob
-    message: '', // String
+    // additionalAddress: '', // true or false
+    // expectedDeliveryDate: '', // returned from lob
+    // id: '', // String
   },
   orderLoading: false,
   overCharacterLimit: false,
@@ -158,6 +157,12 @@ const actionHandler = {
         ...previousState.gallerySingle,
         order: action.order,
       },
+    };
+  },
+  'CLEAR-ORDER-RESPONSE': (previousState) => {
+    return {
+      ...previousState,
+      orderResponse: {},
     };
   },
 };
