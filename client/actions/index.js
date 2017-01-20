@@ -184,3 +184,36 @@ export const toggleAddress = (showAddress) => {
     showAddress,
   };
 };
+
+export const gallerySingleLoading = (loading) => {
+  return {
+    type: 'GALLERY-SINGLE-LOADING',
+    loading,
+  };
+};
+
+export const showGallerySingle = (order) => {
+  return {
+    type: 'SHOW-GALLERY-SINGLE',
+    order,
+  };
+};
+
+export const getGallerySingle = (id) => {
+  return (dispatch) => {
+    dispatch(gallerySingleLoading(true));
+    ajax({
+      url: `/api/gallery/${id}`,
+      type: 'GET',
+    })
+    .then((response) => {
+      dispatch(showGallerySingle(response));
+    })
+    .fail((err) => {
+      console.log(err);
+    })
+    .always(() => {
+      dispatch(gallerySingleLoading(false));
+    });
+  };
+};
