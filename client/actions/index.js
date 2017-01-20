@@ -91,6 +91,13 @@ export const clearOrders = () => {
   };
 };
 
+export const changeBackgroundImage = (backgroundImage) => {
+  return {
+    type: 'CHANGE-BACKGROUND-IMAGE',
+    backgroundImage
+  }
+};
+
 export const verifyAddress = (addressObject) => {
   return (dispatch) => {
     // Show loading indicator, remove error
