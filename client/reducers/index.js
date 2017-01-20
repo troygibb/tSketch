@@ -43,8 +43,15 @@ const intitialState = {
   },
   metatags: {
     title: 'Draw Trump A Doodle: Make America Draw Again',
+    meta: [
+      { property: 'description', content: 'Draw a doodle, write a message and send a 4"x6" printed postcard to the White House!' },
+      { property: 'og:image', content: '/images/og-image.jpg' },
+      { property: 'og:title', content: 'Draw Trump A Doodle: Make America Draw Again' },
+      { property: 'og:decription', content: 'Draw a doodle, write a message and send a 4"x6" printed postcard to the White House!' },
+    ],
   },
 };
+
 
 const actionHandler = {
   'CHANGE-MESSAGE': (previousState, action) => Object.assign({}, previousState, { message: action.message }),
