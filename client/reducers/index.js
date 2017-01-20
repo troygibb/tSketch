@@ -33,6 +33,14 @@ const intitialState = {
   addressError: false,
   addressWarning: undefined, // Return from lob when address needs apt number
   galleryData: [], // For displaying in gallery
+  gallerySingle: {
+    loading: false,
+    order: {
+      postcardImage: {},
+      message: '',
+      id: '',
+    },
+  },
 };
 
 const actionHandler = {
@@ -120,6 +128,24 @@ const actionHandler = {
     return {
       ...previousState,
       backgroundImage: action.backgroundImage,
+    };
+  },
+  'GALLERY-SINGLE-LOADING': (previousState, action) => {
+    return {
+      ...previousState,
+      gallerySingle: {
+        ...previousState.gallerySingle,
+        loading: action.loading,
+      },
+    };
+  },
+  'SHOW-GALLERY-SINGLE': (previousState, action) => {
+    return {
+      ...previousState,
+      gallerySingle: {
+        ...previousState.gallerySingle,
+        order: action.order,
+      },
     };
   },
 };

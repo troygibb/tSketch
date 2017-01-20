@@ -15,7 +15,7 @@ import Message from './Message';
 import ConfirmPage from './ConfirmPage';
 import Success from './Success';
 import Gallery from './Gallery';
-
+import GallerySingle from './GallerySingle';
 
 const finalStore = applyMiddleware(thunk)(createStore);
 const store = finalStore(reducer);
@@ -34,6 +34,7 @@ class App extends React.Component {
               <Route path="/confirm" component={ConfirmPage} />
               <Route path="/doodle-success" component={Success} />
               <Route path="/gallery" component={Gallery} />
+              <Route path="/gallery/:orderId" component={GallerySingle} />
             </Route>
           </Router>
         </Provider>
@@ -41,7 +42,7 @@ class App extends React.Component {
     );
   }
 }
-
+/* global document */
 ReactDOM.render(<App />, document.getElementById('main'));
 
 // Enables HMR.

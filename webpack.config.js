@@ -24,6 +24,7 @@ const common = {
   output: {
     path: PATHS.build,
     filename: '[name].js',
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -97,10 +98,6 @@ const devConfig = (previousConfig) => {
         `${PATHS.style}/main.scss`, 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       ],
     },
-    output: {
-      path: PATHS.build,
-      filename: '[name].js',
-    },
     devtool: 'source-map',
     plugins: [
       ...previousConfig.plugins,
@@ -113,4 +110,5 @@ const devConfig = (previousConfig) => {
 
 const TARGET = process.env.npm_lifecycle_event;
 const config = TARGET === 'build' || TARGET === 'postinstall' ? buildConfig(common) : devConfig(common);
+console.log(config);
 module.exports = validate(config);

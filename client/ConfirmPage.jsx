@@ -48,7 +48,7 @@ class ConfirmPage extends React.Component {
     );
   }
   renderLoading() {
-    return <Loading text="Printing Your Postcards" />;
+    return <Loading text="Printing Your Postcards. This may take a while." />;
   }
   render() {
     return (

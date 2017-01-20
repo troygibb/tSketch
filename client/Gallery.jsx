@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import uuid from 'uuid';
 
 import { getGallery, clearOrders } from './actions';
@@ -53,7 +54,7 @@ class Gallery extends React.Component {
       return (
         <div key={column._id} className="col-md-4">
           <li className="item thumb interactive">
-            <a href="/">
+            <Link to={`/gallery/${column._id}`}>
               <figure>
                 <figcaption className="text-overlay">
                   <div className="info">
@@ -68,7 +69,7 @@ class Gallery extends React.Component {
                   src={column.postcardImage.secure_url}
                 />
               </figure>
-            </a>
+            </Link>
           </li>
         </div>
       );
