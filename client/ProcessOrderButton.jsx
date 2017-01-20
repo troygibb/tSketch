@@ -58,12 +58,15 @@ class ProcessOrder extends React.Component {
     );
   }
   renderPayButton() {
+    const numberOfCards = this.props.amount / 200;
     return (
       <div>
         <StripeCheckout
           token={this.onToken}
           stripeKey={STRIPE_PUBLIC_KEY}
           amount={this.props.amount}
+          name="Draw Trump A Doodle"
+          description={`${numberOfCards} postcard${(numberOfCards > 1) ? 's' : ''}`}
         >
           <button className="btn btn-block btn-primary">Send Your Doodle!</button>
         </StripeCheckout>
