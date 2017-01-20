@@ -15,7 +15,7 @@ class Navbar extends React.Component {
                 <img src="/images/logo.png" className="logo" alt="" />
               </Link>
               <a className="navbar-toggle btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse">
-                <i className='icon-menu-1'></i>
+                <i className='fa fa-bars'></i>
               </a>
             </div>
           </div>

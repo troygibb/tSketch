@@ -76,6 +76,18 @@ class Home extends React.Component {
           </div>
         </section>
 
+        <section id="who-we-are" className="dark-bg">
+          <div className="container inner-top inner-bottom-sm">
+            <div className="row">
+              <div className="col-md-8 col-sm-9 center-block text-center">
+                <Link className="btn btn-large btn-red" to="/pickBackgroundImage">
+                  Draw Trump A Doodle Now!
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </div>
     );
   }
