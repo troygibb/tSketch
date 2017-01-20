@@ -12,7 +12,7 @@ class Success extends React.Component {
       <div className="container success">
         <h1>Success!</h1>
         <p>
-          Your Doodle should arrive to The White House on {this.props.expectedDeliveryDate}.
+          Your Doodle should arrive to The White House on {orderResponse.expectedDeliveryDate}.
           {(orderResponse.additionalAddress) ? 'A copy will also be sent to you and should arrive shortly after.' : ''}
         </p>
         <div className="row">
@@ -35,6 +35,8 @@ class Success extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return state.orderResponse;
+  return {
+    orderResponse: state.orderResponse,
+  };
 };
 export default connect(mapStateToProps)(Success);

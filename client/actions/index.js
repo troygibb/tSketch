@@ -94,8 +94,8 @@ export const clearOrders = () => {
 export const changeBackgroundImage = (backgroundImage) => {
   return {
     type: 'CHANGE-BACKGROUND-IMAGE',
-    backgroundImage
-  }
+    backgroundImage,
+  };
 };
 
 export const verifyAddress = (addressObject) => {
