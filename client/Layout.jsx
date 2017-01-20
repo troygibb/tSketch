@@ -8,11 +8,12 @@ import Footer from './Footer';
 
 class Layout extends React.Component {
   render() {
-    const { title } = this.props.metatags;
+    const { title, meta } = this.props.metatags;
     return (
       <div className="light-bg">
         <Helmet
           title={title}
+          meta={meta}
         />
         <Navbar />
         { this.props.children }
