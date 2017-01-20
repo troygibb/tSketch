@@ -84,20 +84,21 @@ class Gallery extends React.Component {
     });
   }
   render() {
-    const { galleryData } = this.props;
+    const { galleryData, galleryNext } = this.props;
     if (galleryData.length) {
       return (
         <div className="container bodyWrapper gallery">
 
           { this.renderRows() }
 
-          <div className="row">
+          {(galleryNext) ?
+           (<div className="row">
             <div className="col-md-4 col-md-offset-4">
               <button className="btn btn-primary btn-block" onClick={this.loadMoreRows}>
                 Load More Doodles
               </button>
             </div>
-          </div>
+          </div>) : null}
         </div>
       );
     }
@@ -107,9 +108,10 @@ class Gallery extends React.Component {
   }
 }
 
-const mapStateToProps = ({ galleryData }) => {
+const mapStateToProps = ({ galleryData, galleryNext }) => {
   return {
     galleryData,
+    galleryNext,
   };
 };
 

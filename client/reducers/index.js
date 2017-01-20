@@ -33,6 +33,7 @@ const intitialState = {
   addressError: false,
   addressWarning: undefined, // Return from lob when address needs apt number
   galleryData: [], // For displaying in gallery
+  galleryNext: true, // When no more items, dont show load more button
   gallerySingle: {
     loading: false,
     order: {
@@ -126,6 +127,7 @@ const actionHandler = {
     return {
       ...previousState,
       galleryData: [...previousState.galleryData, ...action.results],
+      galleryNext: action.next,
     };
   },
   'CLEAR-ORDERS': (previousState) => {
