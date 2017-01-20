@@ -8,7 +8,7 @@ const intitialState = {
     color: '#ff0068',
   },
   backgroundImage: null,
-  message: '',
+  message: 'Dear Mr. Trump,',
   postcardImage: null,
   orderResponse: {
     postcardImage: {}, // Cloudinary image object
