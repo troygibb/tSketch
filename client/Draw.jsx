@@ -18,7 +18,7 @@ class Draw extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.atramentOptions.clearing) {
-      this.atrament.clear();
+      this.atrament = AT('#mySketcher', 1275, 1875, 'black', this.props.backgroundImage);
       this.props.changeAtramentOption('clearing', false);
       return;
     }

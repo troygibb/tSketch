@@ -9,17 +9,14 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNumber: 1,
+      pageNumber: 2,
     };
     this.renderRows = this.renderRows.bind(this);
     this.organizeRows = this.organizeRows.bind(this);
     this.loadMoreRows = this.loadMoreRows.bind(this);
   }
   componentWillMount() {
-    this.props.getGallery(this.state.pageNumber);
-    this.setState({
-      pageNumber: this.state.pageNumber + 1,
-    });
+    this.props.getGallery(1);
   }
   componentWillUnmount() {
     // For reseting state to avoid duplicates.
