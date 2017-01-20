@@ -30,7 +30,7 @@ class Home extends React.Component {
                 <header>
                   <h1>WTF Is This?</h1>
                   <p>
-                      Do you have a lot of feelings about the President Elect but no outlet to accurately express them? If so, you have found the right place! Here at Draw Trump a Doodle, we allow you to draw your emotionial response to Donald Drumpf, write a short personal message to Mr. Trump and with a click of a button, automatically send a post card with your personalized message to the White House!
+                      Do you have a lot of feelings about the new President but no outlet to accurately express them? If so, you have found the right place! Here at Draw Trump a Doodle, we allow you to draw your emotionial response to Mr. Trump, write a short personal message and with a click of a button we will print out a 4" x 6" postcard with your doodle and message and mail it to the White House!
                   </p>
                 </header>
               </div>
@@ -45,7 +45,7 @@ class Home extends React.Component {
               <div className="col-md-8 col-sm-9 center-block text-center">
                 <header>
                   <h1>Questions?</h1>
-                  <p>Magnis modipsae que voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam.</p>
+                  <p>With a service as great as this, you surely have some questions.</p>
                 </header>
               </div>
             </div>
@@ -53,7 +53,7 @@ class Home extends React.Component {
               <div className="col-sm-6 inner-right-sm inner-top-sm">
 
                 <h3>How much does it cost?</h3>
-                <p>We are charging 2 dollars a postcard to cover printing and postage. Expressing your feelings to the President with high resolution doodles has never been cheaper!</p>
+                <p>We are charging $2 per postcard to cover the cost of printing and postage. Expressing your feelings to the President with high resolution doodles has never been cheaper!</p>
 
                 <h3>Can I really draw anything I want?</h3>
                 <p>Yes! We are unopinionated and support anyone willing to express their feelings.</p>
@@ -68,9 +68,6 @@ class Home extends React.Component {
 
                 <h3>Will my postcard be made available in the DrawTrumpADoodle gallery ?</h3>
                 <p>Yes! But your personal information will remain anonymous.</p>
-
-                <h3>Can i cancel my account at any time?</h3>
-                <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>
 
               </div>
             </div>
