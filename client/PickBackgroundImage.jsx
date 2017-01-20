@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import uuid from 'uuid';
 
 import { changeBackgroundImage } from './actions';
 
 class PickBackgroundImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const backgrounds = [
       [{
@@ -15,48 +12,48 @@ class PickBackgroundImage extends React.Component {
         caption: 'Blank',
       }, {
         url: '/images/backgrounds/1.jpg',
-        caption: 'Caption',
+        caption: 'Potato Face Trump',
       }, {
         url: '/images/backgrounds/2.jpg',
-        caption: 'Caption',
+        caption: 'Two Thumbs Trump',
       }], [{
         url: '/images/backgrounds/3.jpg',
-        caption: 'Caption',
+        caption: 'Trump Bullying iPhone',
       }, {
         url: '/images/backgrounds/4.jpg',
-        caption: 'Caption',
+        caption: 'Small Hands Trump',
       }, {
         url: '/images/backgrounds/5.jpg',
-        caption: 'Caption',
+        caption: 'Butter Face Trump',
       }], [{
         url: '/images/backgrounds/6.jpg',
-        caption: 'Caption',
+        caption: 'Smaller Hands Trump',
       }, {
         url: '/images/backgrounds/7.jpg',
-        caption: 'Caption',
+        caption: 'Whistling Trump',
       }, {
         url: '/images/backgrounds/8.jpg',
-        caption: 'Caption',
+        caption: 'Baby Trump',
       }], [{
         url: '/images/backgrounds/9.jpg',
-        caption: 'Caption',
+        caption: 'Bamboozled Trump',
       }, {
         url: '/images/backgrounds/10.jpg',
-        caption: 'Caption',
+        caption: 'Small Wagging Finger Trump',
       }, {
         url: '/images/backgrounds/11.jpg',
-        caption: 'Caption',
+        caption: 'Smaller Wagging Finger Trump',
       }],
     ];
     return (
       <div className="container bodyWrapper pickBackground">
         {backgrounds.map((row) => {
           return (
-            <div className="isotope items col-3 gap row">
+            <div className="isotope items col-3 gap row" key={uuid.v4()}>
               {row.map((background) => {
                 return (
-                  <div className="col-md-4">
-                    <li className="item thumb interactive">
+                  <div className="col-md-4" key={uuid.v4()}>
+                    <li className="item thumb interactive" >
                       <a
                         href="#"
                         onClick={
@@ -86,9 +83,6 @@ class PickBackgroundImage extends React.Component {
             </div>
           );
         })}
-        <Link to="/draw">
-          Next
-        </Link>
       </div>
     );
   }
