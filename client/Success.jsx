@@ -35,6 +35,8 @@ class Success extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return state.orderResponse;
+  return {
+    orderResponse: state.orderResponse,
+  };
 };
 export default connect(mapStateToProps)(Success);
