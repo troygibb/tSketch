@@ -76,10 +76,11 @@ export const getGallery = (page) => {
     ajax({
       url: `/api/gallery?page=${page}`,
       type: 'GET',
-    }).done(({ results }) => {
+    }).done(({ results, next }) => {
       dispatch({
         type: 'STORE-ORDERS',
         results,
+        next,
       });
     });
   };
