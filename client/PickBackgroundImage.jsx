@@ -68,7 +68,7 @@ class PickBackgroundImage extends React.Component {
                         <figure>
                           <div className="icon-overlay icn-link">
                             <img
-                              className="pickBackground__preview" src={background.url}
+                              className="pickBackground__preview" src={background.url.replace('.jpg', '-small.jpg')}
                               alt=""
                             />
                           </div>
