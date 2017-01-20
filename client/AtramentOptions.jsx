@@ -89,7 +89,7 @@ class AtramentOptions extends React.Component {
           <input
             type="range"
             min="1"
-            max="40"
+            max="80"
             value= {this.props.atramentOptions.weight}
             onChange={this.changeWidth}
             className="atrament__widthControl"
@@ -97,9 +97,9 @@ class AtramentOptions extends React.Component {
 
           </div>
           <button className="btn btn-sm btn-danger" onClick={this.clearCanvas}>Clear</button>
-          <a href="#" className="pull-right" onClick={this.toggleFullScreen}>
+          {/* <a href="#" className="pull-right" onClick={this.toggleFullScreen}>
             { this.state.fullScreenMode ? 'Exit FullScreen' : 'Go FullScreen'}
-          </a>
+          </a> */}
         </form>
       </div>
     );

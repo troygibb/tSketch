@@ -53,6 +53,7 @@ class GallerySingle extends React.Component {
                   <div className="col-md-4">
                     <TwitterShareButton
                       url={window.location.href}
+                      hashtags={['drawtrumpadoodle']}
                     >
                       <button className="btn btn-primary btn-block">
                         Tweet

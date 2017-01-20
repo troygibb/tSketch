@@ -41,6 +41,9 @@ const intitialState = {
       id: '',
     },
   },
+  metatags: {
+    title: 'Draw Trump A Doodle: Make America Draw Again',
+  },
 };
 
 const actionHandler = {

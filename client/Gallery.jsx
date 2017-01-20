@@ -58,9 +58,7 @@ class Gallery extends React.Component {
               <figure>
                 <figcaption className="text-overlay">
                   <div className="info">
-                    <blockquote>
-                      <p>{column.message}</p>
-                    </blockquote>
+                    <p>{column.message}</p>
                   </div>
                 </figcaption>
                 <img
