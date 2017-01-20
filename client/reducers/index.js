@@ -7,6 +7,7 @@ const intitialState = {
     clearing: false,
     color: '#ff0068',
   },
+  backgroundImage: null,
   message: '',
   postcardImage: null,
   orderResponse: {
@@ -113,6 +114,12 @@ const actionHandler = {
     return {
       ...previousState,
       galleryData: [],
+    };
+  },
+  'CHANGE-BACKGROUND-IMAGE': (previousState, action) => {
+    return {
+      ...previousState,
+      backgroundImage: action.backgroundImage,
     };
   },
 };

@@ -88,7 +88,7 @@ class Mouse extends Point {
 }
 
 class Atrament {
-  constructor(selector, width, height, color) {
+  constructor(selector, width, height, color, imgSrc) {
     if (!document) throw new Error('no DOM found');
 
     // get canvas element
@@ -205,6 +205,14 @@ class Atrament {
 
     this._filling = false;
     this._fillStack = [];
+
+    if (imgSrc) {
+      this.img = new Image();
+      this.img.src = imgSrc;
+      this.img.onload = () => {
+        this.context.drawImage(this.img, 0, 0, this.canvas.width, this.canvas.height)
+      }
+    }
 
     // set drawing params
     this.SMOOTHING_INIT = 0.85;
@@ -513,8 +521,8 @@ class Atrament {
 }
 
 // for people who like functional programming
-function atrament(selector, width, height, color) {
-  return new Atrament(selector, width, height, color);
+function atrament(selector, width, height, color, imgSrc) {
+  return new Atrament(selector, width, height, color, imgSrc);
 }
 
 module.exports = atrament;

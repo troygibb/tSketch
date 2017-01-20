@@ -13,7 +13,7 @@ class Draw extends React.Component {
     this.saveImage = this.saveImage.bind(this);
   }
   componentDidMount() {
-    this.atrament = AT('#mySketcher', 1275, 1875, 'black');
+    this.atrament = AT('#mySketcher', 1275, 1875, 'black', this.props.backgroundImage);
     _.extend(this.atrament, this.props.atramentOptions);
   }
   componentWillReceiveProps(nextProps) {
@@ -33,7 +33,7 @@ class Draw extends React.Component {
       <div className="container" >
         <div className="row bodyWrapper" id="draw">
           <div className="col-md-8">
-            <canvas id="mySketcher" />
+            <canvas id="mySketcher"/>
           </div>
           <div className="col-md-4 text-left">
             <AtramentOptions />
@@ -42,7 +42,6 @@ class Draw extends React.Component {
             </Link>
           </div>
         </div>
-
       </div>
     )
   }
@@ -51,6 +50,7 @@ class Draw extends React.Component {
 const mapStateToProps = (state) => {
   return {
     atramentOptions: state.atramentOptions,
+    backgroundImage: state.backgroundImage,
   };
 };
 

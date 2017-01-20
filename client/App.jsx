@@ -9,6 +9,7 @@ import reducer from './reducers/index';
 
 import Layout from './Layout';
 import Home from './Home';
+import PickBackgroundImage from './PickBackgroundImage';
 import Draw from './Draw';
 import Message from './Message';
 import ConfirmPage from './ConfirmPage';
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Router history={browserHistory}>
             <Route path="/" component={Layout}>
               <IndexRoute component={Home} />
+              <Route path="/pickBackgroundImage" component={PickBackgroundImage} />
               <Route path="/draw" component={Draw} />
               <Route path="/message" component={Message} />
               <Route path="/confirm" component={ConfirmPage} />
