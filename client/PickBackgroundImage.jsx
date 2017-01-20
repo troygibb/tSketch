@@ -47,6 +47,9 @@ class PickBackgroundImage extends React.Component {
     ];
     return (
       <div className="container bodyWrapper pickBackground">
+        <h3 className="sidelines text-center">
+          <span>Pick Your Background Image</span>
+        </h3>
         {backgrounds.map((row) => {
           return (
             <div className="isotope items col-3 gap row" key={uuid.v4()}>
