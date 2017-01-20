@@ -92,6 +92,7 @@ export const clearOrders = () => {
 };
 
 export const changeBackgroundImage = (backgroundImage) => {
+  browserHistory.push('/draw');
   return {
     type: 'CHANGE-BACKGROUND-IMAGE',
     backgroundImage,
