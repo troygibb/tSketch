@@ -24,7 +24,7 @@ export const changeMessage = (message) => {
 };
 
 export const showSuccessPage = (orderResponse) => {
-  browserHistory.push('/doodle-success');
+  browserHistory.push(`/gallery/${orderResponse.id}`);
   return {
     type: 'SHOW-SUCCESS-PAGE',
     orderResponse,
@@ -216,5 +216,11 @@ export const getGallerySingle = (id) => {
     .always(() => {
       dispatch(gallerySingleLoading(false));
     });
+  };
+};
+
+export const clearOrderResponse = () => {
+  return {
+    type: 'CLEAR-ORDER-RESPONSE',
   };
 };
