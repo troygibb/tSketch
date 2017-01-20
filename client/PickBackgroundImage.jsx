@@ -9,12 +9,83 @@ class PickBackgroundImage extends React.Component {
     super(props);
   }
   render() {
+    const backgrounds = [
+      [{
+        url: '/images/backgrounds/blank.jpg',
+        caption: 'Blank',
+      }, {
+        url: '/images/backgrounds/1.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/2.jpg',
+        caption: 'Caption',
+      }], [{
+        url: '/images/backgrounds/3.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/4.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/5.jpg',
+        caption: 'Caption',
+      }], [{
+        url: '/images/backgrounds/6.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/7.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/8.jpg',
+        caption: 'Caption',
+      }], [{
+        url: '/images/backgrounds/9.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/10.jpg',
+        caption: 'Caption',
+      }, {
+        url: '/images/backgrounds/11.jpg',
+        caption: 'Caption',
+      }],
+    ];
     return (
-      <div>
-        <button onClick={() => this.props.changeBackgroundImage(require('./styles/images/blahDonald.jpg'))}>Blah Donald</button>
-        <button onClick={() => this.props.changeBackgroundImage(require('./styles/images/butterDonald.jpg'))}>Butter Donald</button>
-        <button onClick={() => this.props.changeBackgroundImage(require('./styles/images/donaldAngry.jpg'))}>Donald Angry</button>
-        <button onClick={() => this.props.changeBackgroundImage(require('./styles/images/fatherDonald.jpg'))}>Father Donald</button>
+      <div className="container bodyWrapper pickBackground">
+        {backgrounds.map((row) => {
+          return (
+            <div className="isotope items col-3 gap row">
+              {row.map((background) => {
+                return (
+                  <div className="col-md-4">
+                    <li className="item thumb interactive">
+                      <a
+                        href="#"
+                        onClick={
+                        (e) => {
+                          e.preventDefault();
+                          this.props.changeBackgroundImage(background.url);
+                        }}
+                      >
+                        <figure>
+                          <div className="icon-overlay icn-link">
+                            <img
+                              className="pickBackground__preview" src={background.url}
+                              alt=""
+                            />
+                          </div>
+                          <figcaption className="bordered no-top-border">
+                            <div className="info">
+                              <h4>{background.caption}</h4>
+                            </div>
+                          </figcaption>
+                        </figure>
+                      </a>
+                    </li>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
         <Link to="/draw">
           Next
         </Link>

@@ -52,22 +52,22 @@ class Home extends React.Component {
             <div className="row">
               <div className="col-sm-6 inner-right-sm inner-top-sm">
 
-                <h3>How long are the contracts?</h3>
-                <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>
+                <h3>How much does it cost?</h3>
+                <p>We are charging 2 dollars a postcard to cover printing and postage. Expressing your feelings to the President with high resolution doodles has never been cheaper!</p>
 
-                <h3>Can i switch plans later?</h3>
-                <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>
+                <h3>Can I really draw anything I want?</h3>
+                <p>Yes! We are unopinionated and support anyone willing to express their feelings.</p>
 
-                <h3>What support options do i have?</h3>
-                <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>
+                <h3>Will Donald Trump read my postcard?</h3>
+                <p>Given his history of Trump responding to his Twitter feed, there’s a good chance your card will draw his ire!</p>
 
               </div>
               <div className="col-sm-6 inner-left-sm inner-top-sm">
-                <h3>Is there a setup fee?</h3>
-                <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>
+                <h3>Will my doodle and message really be sent to the White House?</h3>
+                <p>You bet they are! We are using a service called <a href="https://lob.com/" target="_blank">Lob</a> that prints out and sends postcards with the click of a button! Once you pay and submit, your postcard(s) will be mailed via USPS within the next business day. If you’re wondering, the postcards will be sent to the address: “The White House, 1600 Pennsylvania Avenue NW, Washington DC, 20500"</p>
 
-                <h3>What types of payment methods are accepted?</h3>
-                <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>
+                <h3>Will my postcard be made available in the DrawTrumpADoodle gallery ?</h3>
+                <p>Yes! But your personal information will remain anonymous.</p>
 
                 <h3>Can i cancel my account at any time?</h3>
                 <p>Conecus iure posae volor remped modis aut accabora incim resto explabo eictemperum quiae sitiorem volor remped modis volor.</p>

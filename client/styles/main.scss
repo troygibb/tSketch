@@ -59,6 +59,13 @@
 		margin-bottom: 10px;
 	}
 }
+.pickBackground {
+    &__preview {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+}
 
 .message{
 	&__field{
