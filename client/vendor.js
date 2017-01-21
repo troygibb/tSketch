@@ -13,3 +13,4 @@ import atrament from 'atrament';
 import _ from 'lodash';
 import ReactInputRange from 'react-input-range';
 import ReactColor from 'react-color';
+import cloudinary from 'cloudinary-core';

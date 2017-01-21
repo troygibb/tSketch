@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import uuid from 'uuid';
+import cloudinary from 'cloudinary-core';
 
 import { getGallery, clearOrders } from './actions';
 import Loading from './Loading';
+
+const cl = cloudinary.Cloudinary.new( { cloud_name: CLOUDINARY_CLOUD_NAME });
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -64,7 +67,7 @@ class Gallery extends React.Component {
                 <img
                   alt="presentation"
                   className="doodle"
-                  src={column.postcardImage.secure_url}
+                  src={cl.url(column.postcardImage.public_id, { width: 400, height: 588, crop: 'fill'})}
                 />
               </figure>
             </Link>
