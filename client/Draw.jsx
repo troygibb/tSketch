@@ -12,6 +12,9 @@ class Draw extends React.Component {
     super(props);
     this.saveImage = this.saveImage.bind(this);
   }
+  componentWillMount() {
+    window.scrollTo(0, 0);
+  }
   componentDidMount() {
     this.atrament = AT('#mySketcher', 1275, 1875, 'black', this.props.backgroundImage);
     _.extend(this.atrament, this.props.atramentOptions);
