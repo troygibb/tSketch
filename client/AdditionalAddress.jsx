@@ -13,6 +13,9 @@ class AdditionalAddress extends React.Component {
     this.renderLoading = this.renderLoading.bind(this);
     this.renderForm = this.renderForm.bind(this);
   }
+  componentWillUnmount() {
+    this.props.toggleAddress(false);
+  }
   changeAddress(event) {
     if (event.target.name === 'address_zip') {
       // Validating zipcode for 5-digits. Ignore change event if it doesn't pass regex
