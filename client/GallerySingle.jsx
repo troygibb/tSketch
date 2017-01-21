@@ -2,8 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ShareButtons } from 'react-share';
 import FacebookProvider, { Comments } from 'react-facebook';
+import cloudinary from 'cloudinary-core';
 import { getGallerySingle, clearOrderResponse } from './actions';
 import Loading from './Loading';
+
+const cl = cloudinary.Cloudinary.new( { cloud_name: CLOUDINARY_CLOUD_NAME });
 
 const {
   FacebookShareButton,
@@ -37,7 +40,7 @@ class GallerySingle extends React.Component {
         <div className="col-md-6">
           <img
             alt="Your Doodle"
-            src={this.props.postcardImage.secure_url}
+            src={cl.url(this.props.postcardImage.public_id, { width: 570, crop: 'fit' })}
             className="confirm__doodlePreview"
           />
         </div>
